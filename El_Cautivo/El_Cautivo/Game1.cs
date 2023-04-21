@@ -28,9 +28,10 @@ namespace El_Cautivo
 
         protected override void Initialize()
         {
+            Jessie.Scale = new Vector2(8, 8);
+            Jessie.speed = 2;
             Jessie.Position = new Vector2(512, 512);
             state = GameState.MainMenu;
-            // TODO: Add your initialization logic here
             _graphics.PreferredBackBufferHeight = 1080;
             _graphics.PreferredBackBufferWidth = 1920;
             _graphics.IsFullScreen = true;
@@ -45,9 +46,9 @@ namespace El_Cautivo
             Lab.Surroundings = Content.Load<Texture2D>("Lab");
             ArialFont = Content.Load<SpriteFont>("Font");
             TitleFont = Content.Load<SpriteFont>("TitleFont");
-            Jessie.InitAnimations(Content.Load<Texture2D>("WalkSheetBmp"), Content.Load<Texture2D>("WalkSheetBmp"));
+            Jessie.InitAnimations(Content.Load<Texture2D>("WalkSheetBmp"), Content.Load<Texture2D>("RevercedWalkSheet"), 
+                Content.Load<Texture2D>("WalkSheetBmp"), Content.Load<Texture2D>("RevercedWalkSheet"));
             MainMenu.Font = TitleFont;
-            // TODO: use this.Content to load your game content here
         }
 
         protected override void Update(GameTime gameTime)
@@ -56,18 +57,13 @@ namespace El_Cautivo
                 Exit();
 
             if (state == GameState.MainMenu && Keyboard.GetState().IsKeyDown(Keys.Enter)) state = GameState.Game;
-            // TODO: Add your update logic here
             Jessie.Update(ref state);
             base.Update(gameTime);
-            Draw(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
             _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
-            // TODO: Add your drawing code here
             if (state == GameState.MainMenu) MainMenu.Draw(_spriteBatch);
             else
             {

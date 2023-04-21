@@ -13,23 +13,28 @@ namespace El_Cautivo
     {
         public float Delay;
         private List<Rectangle> Frames = new List<Rectangle>();
+        private List<Rectangle> ReverseFrames = new List<Rectangle>();
         DateTime currentTime;
         int CurrentFrame = 0;
-        Texture2D sheet;
-        Texture2D Frame;
+        Texture2D sheet, reverceSheet;
+        static bool isReverced;
 
         /// <summary>
         /// Creates an animation
         /// </summary>
         /// <param name="SpriteSheet">Texture2D with all of the frames in a row</param>
+        /// <param name="Reverce">Same as previous but reverced</param>
         /// <param name="xIterations">The ammount of sprites placed horizontally</param>
         /// <param name="yIterations">The ammount of sprites placed vertically</param>
         /// <param name="delay">The delay between frames(in ms)</param>
-        public Animation(Texture2D SpriteSheet, int xIterations, int yIterations, float delay)
+        public Animation(Texture2D SpriteSheet, Texture2D Reverce, int xIterations, int yIterations, float delay)
         {
             sheet = SpriteSheet;
+            reverceSheet = Reverce;
             Delay = delay;
             currentTime = DateTime.Now;
+
+            
             var dX = SpriteSheet.Width / xIterations;
             var dY = SpriteSheet.Height / yIterations;
 
@@ -41,6 +46,8 @@ namespace El_Cautivo
                 }
             }
         }
+
+        public void Reverce() => isReverced = !isReverced;
 
         public void Update()
         {
@@ -54,7 +61,7 @@ namespace El_Cautivo
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position, Vector2 scale)
         {
-            spriteBatch.Draw(sheet, position, Frames[CurrentFrame], Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(!isReverced?sheet:reverceSheet, position, Frames[CurrentFrame], Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
         }
     }
 }
