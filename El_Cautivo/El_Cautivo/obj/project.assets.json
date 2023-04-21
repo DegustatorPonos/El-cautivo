@@ -2,6 +2,9 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "MGCB.Windows/3.5.1.1": {
+        "type": "package"
+      },
       "MonoGame.Content.Builder.Task/3.8.1.303": {
         "type": "package",
         "build": {
@@ -58,6 +61,61 @@
     }
   },
   "libraries": {
+    "MGCB.Windows/3.5.1.1": {
+      "sha512": "jAueeS8eDodLmY3lXn+o35ro8rhlZ/zcUY9KRtgf5pMyxP7TBNADJTxhy7bWPeDvshriBWa0mMEK4k6hFs9vQQ==",
+      "type": "package",
+      "path": "mgcb.windows/3.5.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/mgcb/MonoGame.Common.props",
+        "content/mgcb/MonoGame.Content.Builder.targets",
+        "content/mgcb/Tools/2MGFX.exe",
+        "content/mgcb/Tools/ATI.TextureConverter.dll",
+        "content/mgcb/Tools/Assimp64.dll",
+        "content/mgcb/Tools/AssimpNet.dll",
+        "content/mgcb/Tools/CppNet.dll",
+        "content/mgcb/Tools/FreeImage.dll",
+        "content/mgcb/Tools/FreeImageNET.dll",
+        "content/mgcb/Tools/MGCB.exe",
+        "content/mgcb/Tools/MonoGame.Framework.Content.Pipeline.dll",
+        "content/mgcb/Tools/MonoGame.Framework.dll",
+        "content/mgcb/Tools/Nvidia.TextureTools.dll",
+        "content/mgcb/Tools/PVRTexLibNET.dll",
+        "content/mgcb/Tools/PVRTexLibWrapper.dll",
+        "content/mgcb/Tools/Pipeline.exe",
+        "content/mgcb/Tools/SharpDX.D3DCompiler.dll",
+        "content/mgcb/Tools/SharpDX.DXGI.dll",
+        "content/mgcb/Tools/SharpDX.Direct2D1.dll",
+        "content/mgcb/Tools/SharpDX.Direct3D11.dll",
+        "content/mgcb/Tools/SharpDX.Direct3D9.dll",
+        "content/mgcb/Tools/SharpDX.MediaFoundation.dll",
+        "content/mgcb/Tools/SharpDX.RawInput.dll",
+        "content/mgcb/Tools/SharpDX.XAudio2.dll",
+        "content/mgcb/Tools/SharpDX.XInput.dll",
+        "content/mgcb/Tools/SharpDX.dll",
+        "content/mgcb/Tools/SharpFont.dll",
+        "content/mgcb/Tools/Templates/Effect.fx",
+        "content/mgcb/Tools/Templates/Effect.png",
+        "content/mgcb/Tools/Templates/Effect.template",
+        "content/mgcb/Tools/Templates/Font.png",
+        "content/mgcb/Tools/Templates/SpriteEffect.fx",
+        "content/mgcb/Tools/Templates/SpriteEffect.template",
+        "content/mgcb/Tools/Templates/SpriteFont.spritefont",
+        "content/mgcb/Tools/Templates/SpriteFont.template",
+        "content/mgcb/Tools/Templates/Xml.png",
+        "content/mgcb/Tools/Templates/XmlContent.template",
+        "content/mgcb/Tools/Templates/XmlContent.xml",
+        "content/mgcb/Tools/ffmpeg.exe",
+        "content/mgcb/Tools/ffprobe.exe",
+        "content/mgcb/Tools/freetype6.dll",
+        "content/mgcb/Tools/libmojoshader_64.dll",
+        "content/mgcb/Tools/nvtt.dll",
+        "mgcb.windows.3.5.1.1.nupkg.sha512",
+        "mgcb.windows.nuspec",
+        "readme.txt"
+      ]
+    },
     "MonoGame.Content.Builder.Task/3.8.1.303": {
       "sha512": "9Ilzzje62LhWElbPNEl7vh7XsRSbze+lvCJdZtTZUGu48FRgvYN6THURwIB9PN98EI33/Wnf6iuShNUtD7hL4Q==",
       "type": "package",
@@ -97,35 +155,26 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "MGCB.Windows >= 3.5.1.1",
       "MonoGame.Content.Builder.Task >= 3.8.1.303",
       "MonoGame.Framework.DesktopGL >= 3.8.1.303"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\qwawe\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\qwawe\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Git\\El-cautivo\\El_Cautivo\\El_Cautivo\\El_Cautivo.csproj",
+      "projectUniqueName": "D:\\Git\\El-cautivo\\El_cautivo\\El_Cautivo\\El_Cautivo.csproj",
       "projectName": "El_Cautivo",
-      "projectPath": "D:\\Git\\El-cautivo\\El_Cautivo\\El_Cautivo\\El_Cautivo.csproj",
+      "projectPath": "D:\\Git\\El-cautivo\\El_cautivo\\El_Cautivo\\El_Cautivo.csproj",
       "packagesPath": "C:\\Users\\qwawe\\.nuget\\packages\\",
-      "outputPath": "D:\\Git\\El-cautivo\\El_Cautivo\\El_Cautivo\\obj\\",
+      "outputPath": "D:\\Git\\El-cautivo\\El_cautivo\\El_Cautivo\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "C:\\Users\\qwawe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -150,6 +199,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "MGCB.Windows": {
+            "target": "Package",
+            "version": "[3.5.1.1, )"
+          },
           "MonoGame.Content.Builder.Task": {
             "target": "Package",
             "version": "[3.8.1.303, )"
@@ -165,8 +218,7 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -175,7 +227,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
