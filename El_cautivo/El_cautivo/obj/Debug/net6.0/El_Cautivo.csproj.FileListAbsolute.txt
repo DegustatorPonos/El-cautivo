@@ -2,7 +2,6 @@ D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\El_Cautivo.exe
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\El_Cautivo.deps.json
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\El_Cautivo.runtimeconfig.json
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\El_Cautivo.dll
-D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\ref\El_Cautivo.dll
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\El_Cautivo.pdb
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\MonoGame.Framework.dll
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\runtimes\linux-x64\native\libSDL2-2.0.so.0
@@ -30,3 +29,4 @@ D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\WalkSheetBmp.xn
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\MenuBG.xnb
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Lab.xnb
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\RevercedWalkSheet.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\obj\Debug\net6.0\refint\El_Cautivo.dll

@@ -13,7 +13,6 @@ namespace El_Cautivo
     {
         public float Delay;
         private List<Rectangle> Frames = new List<Rectangle>();
-        private List<Rectangle> ReverseFrames = new List<Rectangle>();
         DateTime currentTime;
         int CurrentFrame = 0;
         Texture2D sheet, reverceSheet;

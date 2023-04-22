@@ -18,6 +18,7 @@ namespace El_Cautivo
         private SpriteBatch _spriteBatch;
         SpriteFont ArialFont, TitleFont;
         GameState state;
+        public static int dScale = 2;  //TODO Сделать норм поддержку других разрешений, а не вот этот костыль
 
         public Game1()
         {
@@ -28,13 +29,13 @@ namespace El_Cautivo
 
         protected override void Initialize()
         {
-            Jessie.Scale = new Vector2(8, 8);
-            Jessie.speed = 2;
-            Jessie.Position = new Vector2(512, 512);
+            Jessie.Scale = new Vector2(8, 8)/dScale;
+            Jessie.speed = 2 / dScale;
+            Jessie.Position = new Vector2(512, 512) / dScale;
             state = GameState.MainMenu;
-            _graphics.PreferredBackBufferHeight = 1080;
-            _graphics.PreferredBackBufferWidth = 1920;
-            _graphics.IsFullScreen = true;
+            _graphics.PreferredBackBufferHeight = 1080/dScale;
+            _graphics.PreferredBackBufferWidth = 1920/dScale;
+            _graphics.IsFullScreen = dScale == 1;
             _graphics.ApplyChanges();
             base.Initialize();
         }

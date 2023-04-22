@@ -17,7 +17,7 @@ namespace El_Cautivo
         public static void Draw(SpriteBatch batch)
         {
             //batch.Draw(BG, Vector2.Zero, new Rectangle(0,0,192,108), Color.White, 0, Vector2.Zero, SpriteEffects.None, 1);
-            batch.Draw(BG, Vector2.Zero, new Rectangle(0, 0, 192, 168), Color.White, 0, Vector2.Zero, new Vector2(10, 10), SpriteEffects.None, 0);
+            batch.Draw(BG, Vector2.Zero, new Rectangle(0, 0, 192, 168), Color.White, 0, Vector2.Zero, new Vector2(10, 10)/Game1.dScale, SpriteEffects.None, 0);
             //batch.DrawString(Font, "El Cautivo", TitlePosition, Color.White); //Title
         }
     }

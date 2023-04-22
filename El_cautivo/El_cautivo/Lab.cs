@@ -14,7 +14,7 @@ namespace El_Cautivo
 
         public static void Draw(SpriteBatch batch)
         {
-            batch.Draw(Surroundings, Vector2.Zero, new Rectangle(0, 0, 192, 168), Color.White, 0, Vector2.Zero, new Vector2(10, 10), SpriteEffects.None, 0);
+            batch.Draw(Surroundings, Vector2.Zero, new Rectangle(0, 0, 192, 168), Color.White, 0, Vector2.Zero, new Vector2(10, 10)/Game1.dScale, SpriteEffects.None, 0);
         }
     }
 }
