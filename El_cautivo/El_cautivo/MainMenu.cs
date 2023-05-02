@@ -13,11 +13,11 @@ namespace El_Cautivo
     {
         public static Texture2D BG { get; set; }
         public static SpriteFont Font { get; set; }
-        static Vector2 TitlePosition = new Vector2(64, 64);
+        //static Vector2 TitlePosition = new Vector2(64, 64);
         public static void Draw(SpriteBatch batch)
         {
             //batch.Draw(BG, Vector2.Zero, new Rectangle(0,0,192,108), Color.White, 0, Vector2.Zero, SpriteEffects.None, 1);
-            batch.Draw(BG, Vector2.Zero, new Rectangle(0, 0, BG.Height, BG.Width), Color.White, 0, Vector2.Zero, new Vector2(10, 10)/Game1.dScale, SpriteEffects.None, 0);
+            batch.Draw(BG, Vector2.Zero, new Rectangle(0, 0, BG.Width, BG.Height), Color.White, 0, Vector2.Zero, new Vector2(10, 10)/Game1.dScale, SpriteEffects.None, 0);
             //batch.DrawString(Font, "El Cautivo", TitlePosition, Color.White); //Title
         }
     }

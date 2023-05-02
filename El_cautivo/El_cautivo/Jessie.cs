@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace El_Cautivo
 {
-    static class Jessie
+    static class Jessie 
     {
         #region Movement vars
         public enum Directions

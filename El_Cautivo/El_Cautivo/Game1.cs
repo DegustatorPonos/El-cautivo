@@ -1,6 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using El_Cautivo.EngineExtentions;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace El_Cautivo
 {
@@ -13,7 +15,7 @@ namespace El_Cautivo
             MiniGame,
             Ending
         }
-
+        Button testButton;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         SpriteFont ArialFont, TitleFont;
@@ -42,6 +44,7 @@ namespace El_Cautivo
 
         protected override void LoadContent()
         {
+            testButton = new Button(new Vector2(10, 10), Content.Load<Texture2D>("Lab"), BeginGame);
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             MainMenu.BG = Content.Load<Texture2D>("MenuBG");
             Lab.Surroundings = Content.Load<Texture2D>("Lab");
@@ -56,7 +59,7 @@ namespace El_Cautivo
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            testButton.Update();
             if (state == GameState.MainMenu && Keyboard.GetState().IsKeyDown(Keys.Enter)) state = GameState.Game;
             Jessie.Update(ref state);
             base.Update(gameTime);
@@ -65,7 +68,11 @@ namespace El_Cautivo
         protected override void Draw(GameTime gameTime)
         {
             _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
-            if (state == GameState.MainMenu) MainMenu.Draw(_spriteBatch);
+            if (state == GameState.MainMenu)
+            {
+                MainMenu.Draw(_spriteBatch);
+                testButton.Draw(_spriteBatch);
+            }
             else
             {
                 Lab.Draw(_spriteBatch);
@@ -74,5 +81,7 @@ namespace El_Cautivo
             _spriteBatch.End();
             base.Draw(gameTime);        
         }
+
+        void BeginGame() => state = GameState.Game;
     }
 }
