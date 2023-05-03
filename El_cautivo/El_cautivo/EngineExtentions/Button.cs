@@ -2,10 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace El_Cautivo.EngineExtentions
 {
@@ -22,7 +18,8 @@ namespace El_Cautivo.EngineExtentions
             buttonRectangle = new Rectangle((int)pos.X, (int)pos.Y, Texture.Width, Texture.Height);
         }
 
-        bool IsCovered;
+        public bool IsCovered { get; private set; }
+        public Color CoveringColor = Color.Gray;
         Color overlayColor = Color.White;
         Rectangle buttonRectangle;
         Action action;
@@ -53,7 +50,7 @@ namespace El_Cautivo.EngineExtentions
             }
         }
 
-        void OnCover() => overlayColor = Color.Gray;
+        void OnCover() => overlayColor = CoveringColor;
 
         void OnUncover() => overlayColor = Color.White;
     }

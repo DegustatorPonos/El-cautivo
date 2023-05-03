@@ -67,7 +67,6 @@ namespace El_Cautivo
                     {
                         direction = Dir[i];
                         WalkAnimation.Reverce();
-                        
                     }
                     Position += Forces[i] * speed;
                 }
