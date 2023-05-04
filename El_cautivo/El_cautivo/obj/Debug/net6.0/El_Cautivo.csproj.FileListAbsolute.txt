@@ -32,3 +32,5 @@ D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\RevercedWalkShe
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\ref\El_Cautivo.dll
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\SliderBasis.xnb
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\SliderPointer.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\RestSheet.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Buttons\ExitButton.xnb

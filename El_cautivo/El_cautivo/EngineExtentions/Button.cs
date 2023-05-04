@@ -7,7 +7,7 @@ namespace El_Cautivo.EngineExtentions
 {
     public class Button : IDrawable
     {
-        public Button(Vector2 pos, Texture2D Texture, Action act, double scale = 1)
+        public Button(Vector2 pos, Texture2D Texture, Action act, int scale = 1)
         {
             action = act;
             Scale = scale;
@@ -15,7 +15,7 @@ namespace El_Cautivo.EngineExtentions
             texture = Texture;
 
             IsCovered = false;
-            buttonRectangle = new Rectangle((int)pos.X, (int)pos.Y, Texture.Width, Texture.Height);
+            buttonRectangle = new Rectangle((int)pos.X, (int)pos.Y, Texture.Width*scale, Texture.Height*scale);
         }
 
         public bool IsCovered { get; private set; }
@@ -25,12 +25,12 @@ namespace El_Cautivo.EngineExtentions
         Action action;
         Vector2 Position;
         Texture2D texture;
-        public double Scale = 1;
+        public int Scale = 1;
 
         public void Draw(SpriteBatch batch)
         {
             batch.Draw(texture, Position, new Rectangle(0, 0, texture.Width, texture.Height), overlayColor, 0, 
-                Vector2.Zero, Vector2.One, SpriteEffects.None, 0);
+                Vector2.Zero, Vector2.One*Scale, SpriteEffects.None, 0);
         }
 
         public void Update()

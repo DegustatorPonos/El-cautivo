@@ -16,10 +16,6 @@ namespace El_Cautivo
             Ending
         }
 
-
-        Button testButton;
-        Slider testSlider;
-
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         SpriteFont ArialFont, TitleFont;
@@ -35,6 +31,7 @@ namespace El_Cautivo
 
         protected override void Initialize()
         {
+            MainMenu.INIT(Exit);
             Jessie.Scale = new Vector2(8, 8)/dScale;
             Jessie.speed = 2 / dScale;
             Jessie.Position = new Vector2(512, 512) / dScale;
@@ -48,14 +45,12 @@ namespace El_Cautivo
 
         protected override void LoadContent()
         {
-            testSlider = new Slider(Content.Load<Texture2D>("SliderBasis"), Content.Load<Texture2D>("SliderPointer"), new Vector2(10, 150));
-            testButton = new Button(new Vector2(10, 10), Content.Load<Texture2D>("Lab"), BeginGame);
+            MainMenu.LoadContent(Content);
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            MainMenu.BG = Content.Load<Texture2D>("MenuBG");
             Lab.Surroundings = Content.Load<Texture2D>("Lab");
             ArialFont = Content.Load<SpriteFont>("Font");
             TitleFont = Content.Load<SpriteFont>("TitleFont");
-            Jessie.InitAnimations(Content.Load<Texture2D>("WalkSheetBmp"), Content.Load<Texture2D>("RevercedWalkSheet"), 
+            Jessie.InitAnimations(Content.Load<Texture2D>("RestSheet"), Content.Load<Texture2D>("RestSheet"), 
                 Content.Load<Texture2D>("WalkSheetBmp"), Content.Load<Texture2D>("RevercedWalkSheet"));
             MainMenu.Font = TitleFont;
         }
@@ -64,9 +59,8 @@ namespace El_Cautivo
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            testButton.Update();
-            testSlider.Update();
             if (state == GameState.MainMenu && Keyboard.GetState().IsKeyDown(Keys.Enter)) state = GameState.Game;
+            if (state == GameState.MainMenu) MainMenu.Update();
             Jessie.Update(ref state);
             base.Update(gameTime);
         }
@@ -77,8 +71,6 @@ namespace El_Cautivo
             if (state == GameState.MainMenu)
             {
                 MainMenu.Draw(_spriteBatch);
-                testButton.Draw(_spriteBatch);
-                testSlider.Draw(_spriteBatch);
             }
             else
             {
@@ -88,7 +80,5 @@ namespace El_Cautivo
             _spriteBatch.End();
             base.Draw(gameTime);        
         }
-
-        void BeginGame() => state = GameState.Game;
     }
 }

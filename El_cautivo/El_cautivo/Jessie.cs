@@ -41,6 +41,7 @@ namespace El_Cautivo
         public static void InitAnimations(Texture2D rest, Texture2D Rrest, Texture2D walk, Texture2D Rwalk)
         {
             WalkAnimation = new Animation(walk, Rwalk, 4, 1, 300);
+            RestAnimation = new Animation(rest, Rrest, 5, 2, 300);
         }
         static Animation WalkAnimation, RestAnimation;
         #endregion
@@ -51,13 +52,15 @@ namespace El_Cautivo
 
         public static void Update(ref Game1.GameState State)
         {
+            RestAnimation.Update();
             WalkAnimation.Update();
-            currentAnimation = WalkAnimation;
+            //currentAnimation = RestAnimation;
             if(State == Game1.GameState.Game) Walk();
         }
-
+        private static bool isWalking = false;
         private static void Walk()
         {
+            isWalking = false;
             var keyboardStatus = Keyboard.GetState();
             foreach(var i in Forces.Keys)
             {
@@ -69,8 +72,10 @@ namespace El_Cautivo
                         WalkAnimation.Reverce();
                     }
                     Position += Forces[i] * speed;
+                    isWalking = true;
                 }
             }
+            currentAnimation = isWalking ? WalkAnimation : RestAnimation;
         }
         
     }
