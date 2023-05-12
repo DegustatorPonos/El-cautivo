@@ -34,3 +34,12 @@ D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\SliderBasis.xnb
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\SliderPointer.xnb
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\RestSheet.xnb
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Buttons\ExitButton.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Buttons\BeginButton.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Buttons\SettingsButton.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\BG_clean.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Buttons\BackButton.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Audio\Baby_blue.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Buttons\FullScreenButton.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Buttons\ExitMenu\Confirm.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Buttons\ExitMenu\Decline.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Buttons\ExitMenu\Text.xnb

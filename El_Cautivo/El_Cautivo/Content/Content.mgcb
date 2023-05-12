@@ -25,6 +25,12 @@
 /processorParam:TextureFormat=Color
 /build:-2.png;MenuBG
 
+#begin Audio/Baby_blue.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Baby_blue.wav;Audio/Baby_blue
+
 #begin Background_Lab.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -37,6 +43,42 @@
 /processorParam:TextureFormat=Color
 /build:Background_Lab.png;Lab
 
+#begin BG_clean.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BG_clean.png;BG_clean
+
+#begin Buttons/BackButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Buttons/BackButton.png;Buttons/BackButton
+
+#begin Buttons/BeginButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Buttons/BeginButton.png;Buttons/BeginButton
+
 #begin Buttons/ExitButton.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -48,6 +90,66 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Buttons/ExitButton.png;Buttons/ExitButton
+
+#begin Buttons/ExitMenu/ДА.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Buttons/ExitMenu/ДА.png;Buttons/ExitMenu/Confirm
+
+#begin Buttons/ExitMenu/НЕТ.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Buttons/ExitMenu/НЕТ.png;Buttons/ExitMenu/Decline
+
+#begin Buttons/ExitMenu/Фурри.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Buttons/ExitMenu/Фурри.png;Buttons/ExitMenu/Text
+
+#begin Buttons/FullScreenButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Buttons/FullScreenButton.png;Buttons/FullScreenButton
+
+#begin Buttons/SettingsButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Buttons/SettingsButton.png;Buttons/SettingsButton
 
 #begin Font.spritefont
 /importer:FontDescriptionImporter

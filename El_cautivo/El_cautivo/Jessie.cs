@@ -33,7 +33,7 @@ namespace El_Cautivo
 
 
         public static Vector2 Position, Scale;
-        public static Animation currentAnimation;
+        public static Animation currentAnimation = RestAnimation;
 
         #region Animation sprites
         public static Texture2D WalkSheet { set { WalkSheet = value; } }

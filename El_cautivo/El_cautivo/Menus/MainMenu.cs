@@ -13,44 +13,53 @@ namespace El_Cautivo
 {
     static class MainMenu
     {
-        public static void INIT(Action exit)
+        #region GUI elements
+        public static void Init(Action exit)
         {
             Quit = exit;
         }
-
         static void InitButtons()
         {
             ExitButton = new Button(ExitPosition/ Game1.dScale, ExitButtonTexture, Quit, 4/ Game1.dScale);
+            BeginButton = new Button(BeginningPosition / Game1.dScale, BeginButtontexture, new Action(() => Game1.state = Game1.GameState.Game), 4 / Game1.dScale);
+            SettingsButton = new Button(SettingsPosition / Game1.dScale, SettingsButtonTexture, new Action(() => Game1.state = Game1.GameState.SettingsMenu), 4 / Game1.dScale);
         }
         static Action Quit;
         public static void LoadContent(ContentManager Content)
         {
             BG = Content.Load<Texture2D>("MenuBG");
             ExitButtonTexture = Content.Load<Texture2D>("Buttons/ExitButton");
+            BeginButtontexture = Content.Load<Texture2D>("Buttons/BeginButton");
+            SettingsButtonTexture = Content.Load<Texture2D>("Buttons/SettingsButton");
             InitButtons();
         }
-        
+
         static Texture2D BG, BeginButtontexture, ExitButtonTexture, SettingsButtonTexture;
         public static SpriteFont Font { get; set; }
 
-        #region GUI elements
+        
         static Vector2 ExitPosition = new Vector2(50, 780);
+        static Vector2 SettingsPosition = new Vector2(832, 780);
+        static Vector2 BeginningPosition = new Vector2(1614, 780);
 
-        static Button ExitButton;
+        static Button ExitButton, BeginButton, SettingsButton;
         #endregion
 
         public static void Draw(SpriteBatch batch)
         {
-            //batch.Draw(BG, Vector2.Zero, new Rectangle(0,0,192,108), Color.White, 0, Vector2.Zero, SpriteEffects.None, 1);
             batch.Draw(BG, Vector2.Zero, new Rectangle(0, 0, BG.Width, BG.Height), Color.White, 0, Vector2.Zero, new Vector2(10, 10)/Game1.dScale, SpriteEffects.None, 0);
-            //batch.DrawString(Font, Mouse.GetState().Position.ToString(), Vector2.Zero, Color.White); //Title
-            ExitButton.Draw(batch);
             
+            //batch.DrawString(Font, Mouse.GetState().Position.ToString(), Vector2.Zero, Color.White); //Mouse coorinates
+            ExitButton.Draw(batch);
+            BeginButton.Draw(batch);
+            SettingsButton.Draw(batch);
         }
 
         public static void Update()
         {
             ExitButton.Update();
+            BeginButton.Update();
+            SettingsButton.Update();
         }
     }
 }
