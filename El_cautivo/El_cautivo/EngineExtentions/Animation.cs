@@ -14,6 +14,7 @@ namespace El_Cautivo
         int CurrentFrame = 0;
         Texture2D sheet, reverceSheet;
         static bool isReverced;
+        public Vector2 Scale => new Vector2(Frames[CurrentFrame].Width, Frames[CurrentFrame].Height);
 
         /// <summary>
         /// Creates an animation

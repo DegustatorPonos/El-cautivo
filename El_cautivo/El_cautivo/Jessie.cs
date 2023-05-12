@@ -34,6 +34,7 @@ namespace El_Cautivo
 
         public static Vector2 Position, Scale;
         public static Animation currentAnimation = RestAnimation;
+        public static Rectangle Collider; //Jessie is roughly 1*4
 
         #region Animation sprites
         public static Texture2D WalkSheet { set { WalkSheet = value; } }
@@ -42,20 +43,23 @@ namespace El_Cautivo
         {
             WalkAnimation = new Animation(walk, Rwalk, 4, 1, 300);
             RestAnimation = new Animation(rest, Rrest, 5, 2, 300);
+            Collider = new Rectangle(0, 0, (int)RestAnimation.Scale.X, (int)(RestAnimation.Scale.Y * 3.5));
         }
         static Animation WalkAnimation, RestAnimation;
         #endregion
         public static void Draw(SpriteBatch batch)
         {
             currentAnimation.Draw(batch, Position, Scale);
+            if (Game1.ShowColliders) batch.Draw(Game1.ColliderTexture, new Vector2(Collider.X,Collider.Y), new Rectangle(0,0,1,1), Color.White, 0, Vector2.Zero, new Vector2(Collider.Width, Collider.Height), SpriteEffects.None, 0);
         }
 
         public static void Update(ref Game1.GameState State)
         {
             RestAnimation.Update();
             WalkAnimation.Update();
-            //currentAnimation = RestAnimation;
-            if(State == Game1.GameState.Game) Walk();
+            Collider.X = (int)Position.X + (int)(Collider.Width * 1.5);
+            Collider.Y = (int)Position.Y;
+            if (State == Game1.GameState.Game) Walk();
         }
         private static bool isWalking = false;
         private static void Walk()

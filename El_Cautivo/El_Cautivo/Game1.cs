@@ -21,13 +21,17 @@ namespace El_Cautivo
             Ending
         }
 
+        public static Texture2D ColliderTexture;
+        public static bool ShowColliders = true; //FOR DEBUG PURPOSES ONLY
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         SpriteFont TitleFont;
         public static GameState state;
         public static double MusicVolume = 1;
         public static bool IsFSAvaliable;
-        public static int dScale = 2;  //TODO Сделать норм поддержку других разрешений, а не вот этот костыль
+        public static int dScale = 2;  //TODO Сделать норм поддержку других разрешений, а не вот этот костыль 
+        //Я еблан и оставил эту хуйню здесь, теперь всё работает через неё
 
         SoundEffect MainMenuMusic;
         SoundEffectInstance BGMusicInstance;
@@ -70,11 +74,12 @@ namespace El_Cautivo
             MainMenu.LoadContent(Content);
             SettingsMenu.LoadContent(Content);
             ExitMenu.LoadContent(Content);
+            ColliderTexture = Content.Load<Texture2D>("ColliderTexture");
             InitBGM(Content.Load<SoundEffect>("Audio/Baby_blue"));
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Lab.Surroundings = Content.Load<Texture2D>("Lab");
             TitleFont = Content.Load<SpriteFont>("TitleFont");
-            Jessie.InitAnimations(Content.Load<Texture2D>("RestSheet"), Content.Load<Texture2D>("RestSheet"), 
+            Jessie.InitAnimations(Content.Load<Texture2D>("RestSheet"), Content.Load<Texture2D>("ReversedRestSheet"), 
                 Content.Load<Texture2D>("WalkSheetBmp"), Content.Load<Texture2D>("RevercedWalkSheet"));
             MainMenu.Font = TitleFont;
         }
