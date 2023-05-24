@@ -53,13 +53,13 @@ namespace El_Cautivo
             if (Game1.ShowColliders) batch.Draw(Game1.ColliderTexture, new Vector2(Collider.X,Collider.Y), new Rectangle(0,0,1,1), Color.White, 0, Vector2.Zero, new Vector2(Collider.Width, Collider.Height), SpriteEffects.None, 0);
         }
 
-        public static void Update(ref Game1.GameState State)
+        public static void Update()
         {
             RestAnimation.Update();
             WalkAnimation.Update();
             Collider.X = (int)Position.X + (int)(Collider.Width * 1.5);
             Collider.Y = (int)Position.Y;
-            if (State == Game1.GameState.Game) Walk();
+            if (Game1.state == Game1.GameState.Game) Walk();
         }
         private static bool isWalking = false;
         private static void Walk()
@@ -75,12 +75,27 @@ namespace El_Cautivo
                         direction = Dir[i];
                         WalkAnimation.Reverce();
                     }
+                    if(CheckForCollision(Forces[i] * speed))
                     Position += Forces[i] * speed;
                     isWalking = true;
                 }
             }
             currentAnimation = isWalking ? WalkAnimation : RestAnimation;
         }
-        
+
+        /// <summary>
+        /// Returns if it is possible for Jessie to walk there
+        /// </summary>
+        private static bool CheckForCollision(Vector2 shift)
+        {
+            var ShiftedCollider = new Rectangle((int)shift.X + Collider.X, (int)shift.Y + Collider.Y, Collider.Width, Collider.Height);
+            bool outp = true;
+            foreach(var collider in Lab.Colliders)
+                if(ShiftedCollider.Intersects(collider)) outp = false;
+            return outp;
+        }
+
+        public static void ResizeCollider() => Collider = new Rectangle(0, 0, (int)RestAnimation.Scale.X * (2/Game1.dScale), (int)(RestAnimation.Scale.Y * 3.5) * (2 / Game1.dScale));
+
     }
 }

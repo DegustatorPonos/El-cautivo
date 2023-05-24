@@ -49,6 +49,8 @@ namespace El_Cautivo
             BGMusicInstance.Stop();
             dScale = dScale == 1 ? 2 : 1;
             Initialize();
+            Lab.InitColliders();
+            Jessie.ResizeCollider();
             _graphics.ApplyChanges();
         }
 
@@ -66,6 +68,7 @@ namespace El_Cautivo
             _graphics.IsFullScreen = dScale == 1;
             _graphics.ApplyChanges();
             SettingsMenu.FullScreenManager = FSManager;
+            Lab.InitColliders();
             base.Initialize();
         }
 
@@ -111,7 +114,7 @@ namespace El_Cautivo
                     Lab.Update();
                     break;
             }
-            Jessie.Update(ref state);
+            Jessie.Update();
             //if (state == GameState.MainMenu && Keyboard.GetState().IsKeyDown(Keys.Enter)) state = GameState.Game;
             base.Update(gameTime);
         }
