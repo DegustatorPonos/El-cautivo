@@ -21,7 +21,7 @@ namespace El_Cautivo
         static void InitButtons()
         {
             ExitButton = new Button(ExitPosition/ Game1.dScale, ExitButtonTexture, Quit, 4/ Game1.dScale);
-            BeginButton = new Button(BeginningPosition / Game1.dScale, BeginButtontexture, new Action(() => Game1.state = Game1.GameState.Game), 4 / Game1.dScale);
+            BeginButton = new Button(BeginningPosition / Game1.dScale, BeginButtontexture, BeginGame, 4 / Game1.dScale);
             SettingsButton = new Button(SettingsPosition / Game1.dScale, SettingsButtonTexture, new Action(() => Game1.state = Game1.GameState.SettingsMenu), 4 / Game1.dScale);
         }
         static Action Quit;
@@ -60,6 +60,12 @@ namespace El_Cautivo
             ExitButton.Update();
             BeginButton.Update();
             SettingsButton.Update();
+        }
+
+        static void BeginGame()
+        {
+            Lab.BeginDay();
+            Game1.state = Game1.GameState.Game;
         }
     }
 }

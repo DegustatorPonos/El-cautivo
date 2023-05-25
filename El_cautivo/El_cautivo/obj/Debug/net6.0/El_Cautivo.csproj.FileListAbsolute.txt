@@ -45,3 +45,7 @@ D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Buttons\ExitMen
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Buttons\ExitMenu\Text.xnb
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\ReversedRestSheet.xnb
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\ColliderTexture.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Items\Barrel.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Dots.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\MGContent\Guide\Recipe.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Items\Bag.xnb

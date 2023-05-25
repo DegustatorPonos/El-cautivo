@@ -1,4 +1,5 @@
 ﻿using System;
+using El_Cautivo.GameObjects;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
@@ -36,6 +37,8 @@ namespace El_Cautivo
         public static Animation currentAnimation = RestAnimation;
         public static Rectangle Collider; //Jessie is roughly 1*4
 
+        public static IObject HoldingObject = null;
+
         #region Animation sprites
         public static Texture2D WalkSheet { set { WalkSheet = value; } }
         public static Texture2D RestSheet { set { RestSheet = value; } }
@@ -43,7 +46,7 @@ namespace El_Cautivo
         {
             WalkAnimation = new Animation(walk, Rwalk, 4, 1, 300);
             RestAnimation = new Animation(rest, Rrest, 5, 2, 300);
-            Collider = new Rectangle(0, 0, (int)RestAnimation.Scale.X, (int)(RestAnimation.Scale.Y * 3.5));
+            Collider = new Rectangle(0, 0, (int)RestAnimation.Scale.X, (int)RestAnimation.Scale.X);
         }
         static Animation WalkAnimation, RestAnimation;
         #endregion
@@ -58,7 +61,7 @@ namespace El_Cautivo
             RestAnimation.Update();
             WalkAnimation.Update();
             Collider.X = (int)Position.X + (int)(Collider.Width * 1.5);
-            Collider.Y = (int)Position.Y;
+            Collider.Y = (int)(Position.Y + Collider.Height*2.5); //Don't ask pls, this is fucking random
             if (Game1.state == Game1.GameState.Game) Walk();
         }
         private static bool isWalking = false;
@@ -89,13 +92,17 @@ namespace El_Cautivo
         private static bool CheckForCollision(Vector2 shift)
         {
             var ShiftedCollider = new Rectangle((int)shift.X + Collider.X, (int)shift.Y + Collider.Y, Collider.Width, Collider.Height);
-            bool outp = true;
             foreach(var collider in Lab.Colliders)
-                if(ShiftedCollider.Intersects(collider)) outp = false;
-            return outp;
+                if(ShiftedCollider.Intersects(collider)) return false;
+            return true;
         }
 
-        public static void ResizeCollider() => Collider = new Rectangle(0, 0, (int)RestAnimation.Scale.X * (2/Game1.dScale), (int)(RestAnimation.Scale.Y * 3.5) * (2 / Game1.dScale));
+        public static void ResizeCollider()
+        {
+            //if (Game1.dScale == 1) Position *= 2;
+            //else Position /= 2;
+            Collider = new Rectangle(0, 0, (int)RestAnimation.Scale.X * (2 / Game1.dScale), (int)RestAnimation.Scale.X * (2 / Game1.dScale));
+        }
 
     }
 }

@@ -6,11 +6,45 @@ using System;
 
 using El_Cautivo.Menus;
 using Microsoft.Xna.Framework.Audio;
+using System.Collections.Generic;
 
 namespace El_Cautivo
 {
     public class Game1 : Game
     {
+        #region Chemistry Stuff
+        public enum ChemElement
+        {
+            Methilamine,
+            Aluminum_dust,
+            Glutamic_acid,
+            Phosphoric_acid,
+            Cumeine,
+            Glicine,
+            Glutathionate,
+            Crushed_Glicine,
+            Cumene_hydroperoxide,
+            P2P_Wet,
+            P2P,
+            Liquid_Meth
+        }
+        public static Dictionary<ChemElement, string> GetName = new Dictionary<ChemElement, string>
+        {
+            { ChemElement.Methilamine, "Mrthilamine" },
+            { ChemElement.Aluminum_dust, "Aluminum" },
+            { ChemElement.Glutamic_acid, "Glutamic acid" },
+            { ChemElement.Phosphoric_acid, "Phosphoric acid" },
+            { ChemElement.Cumeine, "Cumeine" },
+            { ChemElement.Glicine, "Glicine" },
+            { ChemElement.Glutathionate, "Glutathionate " },
+            { ChemElement.Crushed_Glicine, "Crushed glicine" },
+            { ChemElement.Cumene_hydroperoxide, "Cumene hydroperoxide" },
+            { ChemElement.P2P_Wet, "Phenyl-2-propanol + water" },
+            { ChemElement.P2P, "Phenyl-2-propanol" },
+            { ChemElement.Liquid_Meth, "Liquified methamphetamine" },
+        };
+
+        #endregion
         public enum GameState
         {
             MainMenu,
@@ -22,11 +56,12 @@ namespace El_Cautivo
         }
 
         public static Texture2D ColliderTexture;
-        public static bool ShowColliders = true; //FOR DEBUG PURPOSES ONLY
+        public static bool ShowColliders = false; //FOR DEBUG PURPOSES ONLY
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        SpriteFont TitleFont;
+        public static SpriteFont TitleFont;
+        public static Texture2D BarrelTexture, BagTexture;
         public static GameState state;
         public static double MusicVolume = 1;
         public static bool IsFSAvaliable;
@@ -42,6 +77,13 @@ namespace El_Cautivo
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            this.Disposed += Game1_Disposed;
+        }
+
+        private void Game1_Disposed(object sender, EventArgs e)
+        {
+         //   _spriteBatch.Dispose();
+           // _graphics.Dispose();
         }
 
         void FSManager()
@@ -58,7 +100,7 @@ namespace El_Cautivo
         {
             IsFSAvaliable = (GraphicsDevice.Adapter.CurrentDisplayMode.Width == 1920 && 
                 GraphicsDevice.Adapter.CurrentDisplayMode.Height == 1080);
-            MainMenu.Init(Exit);
+            MainMenu.Init(Quit);
             Jessie.Scale = new Vector2(8, 8)/dScale;
             Jessie.speed = 2 / dScale;
             Jessie.Position = new Vector2(512, 512) / dScale;
@@ -74,11 +116,14 @@ namespace El_Cautivo
 
         protected override void LoadContent()
         {
+            Lab.LoadContent(Content);
             MainMenu.LoadContent(Content);
             SettingsMenu.LoadContent(Content);
             ExitMenu.LoadContent(Content);
+            BarrelTexture = Content.Load<Texture2D>("Items/Barrel");
+            BagTexture = Content.Load<Texture2D>("Items/Bag");
             ColliderTexture = Content.Load<Texture2D>("ColliderTexture");
-            InitBGM(Content.Load<SoundEffect>("Audio/Baby_blue"));
+            //InitBGM(Content.Load<SoundEffect>("Audio/Baby_blue"));
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Lab.Surroundings = Content.Load<Texture2D>("Lab");
             TitleFont = Content.Load<SpriteFont>("TitleFont");
@@ -110,7 +155,7 @@ namespace El_Cautivo
                 case GameState.ExitMenu:
                     ExitMenu.Update();
                     break;
-                case GameState.Game:
+                case GameState.Game or GameState.MiniGame:
                     Lab.Update();
                     break;
             }
@@ -130,9 +175,8 @@ namespace El_Cautivo
                 case GameState.SettingsMenu:
                     SettingsMenu.Draw(_spriteBatch);
                     break;
-                case GameState.Game:
+                case GameState.Game or GameState.MiniGame:
                     Lab.Draw(_spriteBatch);
-                    Jessie.Draw(_spriteBatch);
                     break;
                 case GameState.ExitMenu:
                     ExitMenu.Draw(_spriteBatch);
@@ -140,6 +184,18 @@ namespace El_Cautivo
             }
             _spriteBatch.End();
             base.Draw(gameTime);
+        }
+
+        void Quit()
+        {
+            //  GC.Collect();
+            //Environment.Exit(0);
+
+            BGMusicInstance.Stop();
+           
+            Exit();
+
+            
         }
     }
 }

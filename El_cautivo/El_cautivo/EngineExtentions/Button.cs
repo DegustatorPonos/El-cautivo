@@ -30,7 +30,7 @@ namespace El_Cautivo.EngineExtentions
         Color overlayColor = Color.White;
         Rectangle buttonRectangle;
         Action action;
-        Vector2 Position;
+        public Vector2 Position;
         Texture2D texture;
         public int Scale = 1;
         bool PrevState;
@@ -71,6 +71,8 @@ namespace El_Cautivo.EngineExtentions
                 IsCovered = false;
             }
             PrevState = mouseState.LeftButton == ButtonState.Pressed;
+            buttonRectangle.X = (int)Position.X;
+            buttonRectangle.Y = (int)Position.Y;
         }
 
         void OnCover() => overlayColor = CoveringColor;
