@@ -29,7 +29,6 @@ D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\WalkSheetBmp.xn
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\MenuBG.xnb
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Lab.xnb
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\RevercedWalkSheet.xnb
-D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\ref\El_Cautivo.dll
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\SliderBasis.xnb
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\SliderPointer.xnb
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\RestSheet.xnb
@@ -49,3 +48,10 @@ D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Items\Barrel.xn
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Dots.xnb
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\MGContent\Guide\Recipe.xnb
 D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\Items\Bag.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\obj\Debug\net6.0\refint\El_Cautivo.dll
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\MGContent\Crushing\HitButton.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\MGContent\ChemTable\Take_Cumeine.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\MGContent\ChemTable\Take_Glicine.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\MGContent\Boiling\MixButton.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\MGContent\OffButton.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\MGContent\OnButton.xnb

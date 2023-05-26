@@ -19,7 +19,7 @@ namespace El_Cautivo
 
         #region Colliders
         static Rectangle LeftBorder, RightBorder,
-            NoteTable, SplittingTable, Refigirator, StorageTable, StorageRoom,
+            NoteTable, BoilingTable, Refigirator, StorageTable, StorageRoom,
             CoffeTable, MixingTable, Vaporizer, SmashingTable, DistillingTable;
 
         public static void InitColliders()
@@ -28,7 +28,7 @@ namespace El_Cautivo
             RightBorder = new Rectangle((1920 - 190) / Game1.dScale, 0, 190 / Game1.dScale, 1080 / Game1.dScale);
 
             NoteTable = new Rectangle(190 / Game1.dScale, 0, 290 / Game1.dScale, 250 / Game1.dScale);
-            SplittingTable = new Rectangle(480 / Game1.dScale, 0, 440 / Game1.dScale, 240 / Game1.dScale);
+            BoilingTable = new Rectangle(480 / Game1.dScale, 0, 440 / Game1.dScale, 240 / Game1.dScale);
             Refigirator = new Rectangle(920 / Game1.dScale, 0, 200 / Game1.dScale, 250 / Game1.dScale);
             StorageTable = new Rectangle(1120 / Game1.dScale, 0, 370 / Game1.dScale, 220 / Game1.dScale);
             StorageRoom = new Rectangle(1490 / Game1.dScale, 0, 410 / Game1.dScale, 10 / Game1.dScale);
@@ -39,10 +39,10 @@ namespace El_Cautivo
             SmashingTable = new Rectangle(1130 / Game1.dScale, (1080 - 300) / Game1.dScale, 330 / Game1.dScale, 300 / Game1.dScale);
             DistillingTable = new Rectangle(1460 / Game1.dScale, (1080 - 300) / Game1.dScale, 270 / Game1.dScale, 300 / Game1.dScale);
             Colliders = new Rectangle[] { LeftBorder, RightBorder,
-                NoteTable, SplittingTable, Refigirator, StorageTable, StorageRoom,
+                NoteTable, BoilingTable, Refigirator, StorageTable, StorageRoom,
                 CoffeTable, MixingTable, Vaporizer, SmashingTable, DistillingTable };
             MGs.Clear();
-            InitLab();
+            //InitLab();
             GC.Collect(); //Delete all previous values
         }
 
@@ -57,13 +57,21 @@ namespace El_Cautivo
         }
         #endregion
 
-        public static List<IObject> objects = new List<IObject>();
+        public static List<Barrel> objects = new List<Barrel>();
         public static List<IMiniGame> MGs = new List<IMiniGame>();
+
+        static readonly int MgColliderHeight = 100;
 
         public static void InitLab()
         {
-            MGs.Add(new Guide(new Rectangle(190 / Game1.dScale, 250 / Game1.dScale, 290 / Game1.dScale, 250 / Game1.dScale)));
-            //MGs.Add(new CrushingMG(new Rectangle(1130 / Game1.dScale, (1080 - 400) / Game1.dScale, 330 / Game1.dScale, 100 / Game1.dScale)));
+            MGs.Add(new Guide(new Rectangle(NoteTable.X + (Jessie.Collider.Width / 2), NoteTable.Height,
+                NoteTable.Width - (Jessie.Collider.Width ), MgColliderHeight / Game1.dScale)));
+            MGs.Add(new ChemTableMG(new Rectangle(StorageTable.X + (Jessie.Collider.Width / 2), StorageTable.Height,
+               StorageTable.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
+            MGs.Add(new BoilingMG(new Rectangle(BoilingTable.X + (Jessie.Collider.Width / 2), BoilingTable.Height,
+               BoilingTable.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
+            MGs.Add(new CrushingMG(new Rectangle(SmashingTable.X + (Jessie.Collider.Width / 2), SmashingTable.Y - (MgColliderHeight / Game1.dScale),
+                SmashingTable.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
         }
         
         public static void LoadContent(ContentManager Content)
@@ -73,22 +81,40 @@ namespace El_Cautivo
                 i.LoadContent(Content);
         }
 
+        static int Day = 1;
+        public static TimeSpan InGameTime; 
+        static TimeSpan Minute = new TimeSpan(0,1,0),
+            EndTime = new TimeSpan(17, 30, 0);
+        static DateTime deltaTime;
+
         public static void BeginDay()
         {
+            Jessie.Position = new Vector2(512, 512)/Game1.dScale;
+            InGameTime = new TimeSpan(9,0,0);
+            deltaTime = DateTime.Now;
             objects.Clear();
             InitObjects();
         }
 
+        public static void EndDay()
+        {
+            Day++;
+            BeginDay();
+        }
+
         static void InitObjects()
         {
-            objects.Add(new Barrel(Game1.ChemElement.Glutamic_acid, new Vector2(1580, 200) / Game1.dScale, 50, objects));
-            objects.Add(new Barrel(Game1.ChemElement.Phosphoric_acid, new Vector2(1680, 150) / Game1.dScale, 50, objects));
-            objects.Add(new Barrel(Game1.ChemElement.Methilamine, new Vector2(1620, 230) / Game1.dScale, 50, objects));
-            objects.Add(new Barrel(Game1.ChemElement.Aluminum_dust, new Vector2(1620, 100) / Game1.dScale, 50, objects));
+            objects.Add(new Barrel(Game1.ChemElement.Glutamic_acid, new Vector2(1580, 200) / Game1.dScale, 50));
+            objects.Add(new Barrel(Game1.ChemElement.Phosphoric_acid, new Vector2(1680, 150) / Game1.dScale, 50));
+            objects.Add(new Barrel(Game1.ChemElement.Methilamine, new Vector2(1620, 230) / Game1.dScale, 50));
+            objects.Add(new Barrel(Game1.ChemElement.Aluminum_dust, new Vector2(1620, 100) / Game1.dScale, 50));
+            //DEBUG
+            objects.Add(new Barrel(Game1.ChemElement.Glicine, new Vector2(256, 256) / Game1.dScale, 50));
         }
 
         public static void Draw(SpriteBatch batch)
         {
+            sb.Append("Day " + Day+", " + InGameTime.ToString() + "\n");
             batch.Draw(Surroundings, Vector2.Zero, new Rectangle(0, 0, 192, 168), Color.White, 0, Vector2.Zero, new Vector2(10, 10)/Game1.dScale, SpriteEffects.None, 0);
             if (Keyboard.GetState().IsKeyDown(Keys.H))
                 batch.Draw(HintDots, Vector2.Zero, new Rectangle(0, 0, 192, 168), Color.White, 0, Vector2.Zero, new Vector2(10, 10) / Game1.dScale, SpriteEffects.None, 0);
@@ -104,6 +130,13 @@ namespace El_Cautivo
         public static StringBuilder sb = new StringBuilder();
         public static void Update()
         {
+            if ((DateTime.Now - deltaTime).TotalMilliseconds > 1000)
+            {
+                InGameTime += Minute;
+                deltaTime = DateTime.Now;
+            }
+            if (InGameTime.Equals(EndTime)) EndDay();
+
             if (Keyboard.GetState().IsKeyDown(Keys.K))
                 Game1.ShowColliders = !Game1.ShowColliders;
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))

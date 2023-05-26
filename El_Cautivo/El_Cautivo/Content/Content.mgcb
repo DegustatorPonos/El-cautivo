@@ -194,6 +194,54 @@
 /processorParam:TextureFormat=Color
 /build:Items/Слой 18.png;Items/Barrel
 
+#begin MGContent/Boiling/микс.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MGContent/Boiling/микс.png;MGContent/Boiling/MixButton
+
+#begin MGContent/ChemTable/взять глитч.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MGContent/ChemTable/взять глитч.png;MGContent/ChemTable/Take_Glicine
+
+#begin MGContent/ChemTable/взять кончу.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MGContent/ChemTable/взять кончу.png;MGContent/ChemTable/Take_Cumeine
+
+#begin MGContent/Crushing/HitButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MGContent/Crushing/HitButton.png;MGContent/Crushing/HitButton
+
 #begin MGContent/Guide/ьтабличка хуичка.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -205,6 +253,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:MGContent/Guide/ьтабличка хуичка.png;MGContent/Guide/Recipe
+
+#begin MGContent/ОН БЛЯТЬ.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MGContent/ОН БЛЯТЬ.png;MGContent/OnButton
+
+#begin MGContent/офь.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MGContent/офь.png;MGContent/OffButton
 
 #begin RestSheet.png
 /importer:TextureImporter

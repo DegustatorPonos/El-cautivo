@@ -14,32 +14,31 @@ namespace El_Cautivo.GameObjects
     public class Barrel : IDrawable, IObject
     {
         public Game1.ChemElement Content;
-        Vector2 Position;
+        public Vector2 Position;
         public Rectangle Collider;
         public double Volume;
         Button BButton;
         bool isPressed = false;
         private string Info;
         Texture2D Texture;
+        public float Quality;
 
-        List<IObject> BasisList;
 
-
-        public Barrel(Game1.ChemElement cont, Vector2 pos, double vol, List<IObject> baseList)
+        public Barrel(Game1.ChemElement cont, Vector2 pos, double vol, float quality = 1)
         {
             Position = pos;
             Content = cont;
             Volume = vol;
-            BasisList = baseList;
+            Quality = quality;
             UpdateInfo();
             switch (Content)
             {
                 case Game1.ChemElement.Aluminum_dust or Game1.ChemElement.Crushed_Glicine:
                     Texture = Game1.BagTexture;
                     break;
-                case Game1.ChemElement.Glicine:
+                /*case Game1.ChemElement.Glicine:
                     ;
-                    break;
+                    break;*/
                 default:
                     Texture = Game1.BarrelTexture;
                     break;
@@ -73,10 +72,10 @@ namespace El_Cautivo.GameObjects
             }
         }
 
-        /*public void Dispose()
+        public void Delete()
         {
-            BasisList.Remove(this);
-        }*/
+            Lab.objects.Remove(this);
+        }
 
         public void UpdateInfo() => Info = Game1.GetName[Content] + " (" + Volume + "L) \n";
     }

@@ -16,6 +16,7 @@ namespace El_Cautivo
         public enum ChemElement
         {
             Methilamine,
+            Solid_meth,
             Aluminum_dust,
             Glutamic_acid,
             Phosphoric_acid,
@@ -31,6 +32,7 @@ namespace El_Cautivo
         public static Dictionary<ChemElement, string> GetName = new Dictionary<ChemElement, string>
         {
             { ChemElement.Methilamine, "Mrthilamine" },
+            { ChemElement.Solid_meth, "Solid methamphetamine" },
             { ChemElement.Aluminum_dust, "Aluminum" },
             { ChemElement.Glutamic_acid, "Glutamic acid" },
             { ChemElement.Phosphoric_acid, "Phosphoric acid" },
@@ -91,8 +93,8 @@ namespace El_Cautivo
             BGMusicInstance.Stop();
             dScale = dScale == 1 ? 2 : 1;
             Initialize();
-            Lab.InitColliders();
             Jessie.ResizeCollider();
+            Lab.InitColliders();
             _graphics.ApplyChanges();
         }
 
@@ -116,19 +118,21 @@ namespace El_Cautivo
 
         protected override void LoadContent()
         {
-            Lab.LoadContent(Content);
+            
             MainMenu.LoadContent(Content);
             SettingsMenu.LoadContent(Content);
             ExitMenu.LoadContent(Content);
             BarrelTexture = Content.Load<Texture2D>("Items/Barrel");
             BagTexture = Content.Load<Texture2D>("Items/Bag");
             ColliderTexture = Content.Load<Texture2D>("ColliderTexture");
-            //InitBGM(Content.Load<SoundEffect>("Audio/Baby_blue"));
+            InitBGM(Content.Load<SoundEffect>("Audio/Baby_blue"));
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Lab.Surroundings = Content.Load<Texture2D>("Lab");
             TitleFont = Content.Load<SpriteFont>("TitleFont");
             Jessie.InitAnimations(Content.Load<Texture2D>("RestSheet"), Content.Load<Texture2D>("ReversedRestSheet"), 
                 Content.Load<Texture2D>("WalkSheetBmp"), Content.Load<Texture2D>("RevercedWalkSheet"));
+            Lab.InitLab();
+            Lab.LoadContent(Content);
             MainMenu.Font = TitleFont;
         }
 
