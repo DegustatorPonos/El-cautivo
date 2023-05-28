@@ -14,25 +14,37 @@ namespace El_Cautivo.Minigames
 {
     public class BoilingMG : IMiniGame
     {
-        Vector2 BackPos = new Vector2(10, 814), MixPos, OnOffPos;
-        Texture2D BackTexture, MixTexture, OnTexture, OffTexture;
-        Button BackButton, MixButton, OnOffButton; 
+        Vector2 BackPos = new Vector2(10, 814), ActTexture, OnOffPos;
+        Texture2D BackTexture, ActionTexture, OnTexture, OffTexture;
+        Button BackButton, ActionButton, OnOffButton; 
         Rectangle Collider;
         bool IsColliding = false, IsActive = false, isProcessing = false, OnOffSwich = false;
-        string ToDisplay = "F - boil";
+        string ToDisplay = "F - use boiler";
+        public virtual string GetActionTextureName() => "MGContent/Boiling/MixButton";
         float state = 1;
         TimeSpan TimeSave, Timer;
         Barrel firstElement, secondElement, Buffer;
 
 
-        Dictionary<Tuple<Game1.ChemElement, Game1.ChemElement>, Game1.ChemElement> Recipies = new Dictionary<Tuple<Game1.ChemElement, Game1.ChemElement>, Game1.ChemElement>()
-        {
-            {new Tuple<Game1.ChemElement, Game1.ChemElement>(Game1.ChemElement.Glutamic_acid, Game1.ChemElement.Crushed_Glicine), Game1.ChemElement.Glutathionate}
-        };
+        Dictionary<Tuple<Game1.ChemElement, Game1.ChemElement>, Tuple<Game1.ChemElement, TimeSpan>> Recipies;
+
+
+        Game1.ChemElement[] firstElements => Recipies.Keys.Select(x => x.Item1).ToArray();
+        Game1.ChemElement[] secondElements => Recipies.Keys.Select(x => x.Item2).ToArray();
 
         public BoilingMG(Rectangle collider)
         {
             Collider = collider;
+            Recipies = GetRecipies();
+        }
+
+        public virtual Dictionary<Tuple<Game1.ChemElement, Game1.ChemElement>, Tuple<Game1.ChemElement, TimeSpan>> GetRecipies()
+        {
+            return new Dictionary<Tuple<Game1.ChemElement, Game1.ChemElement>, Tuple<Game1.ChemElement, TimeSpan>>()
+            {
+                {new Tuple<Game1.ChemElement, Game1.ChemElement>(Game1.ChemElement.Glutamic_acid, Game1.ChemElement.Crushed_Glicine),
+                    new Tuple<Game1.ChemElement, TimeSpan>(Game1.ChemElement.Glutathionate, new TimeSpan(0, 40, 0))}
+            };
         }
 
         public void Draw(SpriteBatch batch)
@@ -42,24 +54,24 @@ namespace El_Cautivo.Minigames
                  Color.Green, 0, Vector2.Zero, new Vector2(Collider.Width, Collider.Height), SpriteEffects.None, 0);
             if (!IsActive) return;
             BackButton.Draw(batch);
-            MixButton.Draw(batch);
+            ActionButton.Draw(batch);
             OnOffButton.Draw(batch);
         }
 
-        public float GetState() => state;
+        public virtual float GetState() => state;
 
-        public void LoadContent(ContentManager content)
+        public virtual void LoadContent(ContentManager content)
         {
             BackTexture = content.Load<Texture2D>("Buttons/BackButton");
-            MixTexture = content.Load<Texture2D>("MGContent/Boiling/MixButton");
+            ActionTexture = content.Load<Texture2D>(GetActionTextureName());
             OnTexture = content.Load<Texture2D>("MGContent/OnButton");
             OffTexture = content.Load<Texture2D>("MGContent/OffButton");
 
-            MixPos = new Vector2((1920/2), (1080-MixTexture.Height)/2);
+            ActTexture = new Vector2((1920/2), (1080-ActionTexture.Height)/2);
             OnOffPos = new Vector2(1920-(OnTexture.Width*2), 1080-(OffTexture.Height*2));
 
             BackButton = new Button(BackPos / Game1.dScale, BackTexture, OnBackButton, 4 / Game1.dScale, Button.ButtonType.OnUp);
-            MixButton = new Button(MixPos / Game1.dScale, MixTexture, OnMixButton, 2/Game1.dScale, Button.ButtonType.OnUp);
+            ActionButton = new Button(ActTexture / Game1.dScale, ActionTexture, OnActionButton, 2/Game1.dScale, Button.ButtonType.OnUp);
             OnOffButton = new Button(OnOffPos / Game1.dScale, OffTexture, OnOnOffButton, 2 / Game1.dScale, Button.ButtonType.OnUp);
         }
 
@@ -69,24 +81,25 @@ namespace El_Cautivo.Minigames
             IsActive = false;
         }
 
-        private void OnMixButton()
+        void OnActionButton()
         {
             if (!isProcessing)
             {
                 if (!FindIngredients()) return;
                 OnOnOffButton();
                 isProcessing = true;
-                Buffer = new Barrel(Recipies[new Tuple<Game1.ChemElement, Game1.ChemElement>(firstElement.Content, secondElement.Content)], firstElement.Position,
+                Buffer = new Barrel(Recipies[new Tuple<Game1.ChemElement, Game1.ChemElement>(firstElement.Content, secondElement.Content)].Item1, firstElement.Position,
                     Math.Min(firstElement.Volume, secondElement.Volume), firstElement.Quality * secondElement.Quality);
                 Lab.objects.Remove(firstElement);
                 Lab.objects.Remove(secondElement);
-                Timer = Lab.InGameTime + new TimeSpan(0, 45, 0);
-                TimeSave = Lab.InGameTime + new TimeSpan(0, 10, 0); //To mix
-                return;
+                Timer = Lab.InGameTime + Recipies[new Tuple<Game1.ChemElement, Game1.ChemElement>(firstElement.Content, secondElement.Content)].Item2;
             }
+            Action();
+        }
+        public virtual void Action()
+        {
             TimeSave = Lab.InGameTime + new TimeSpan(0, 10, 0);
         }
-
         void OnOnOffButton()
         {
             OnOffSwich = !OnOffSwich;
@@ -94,22 +107,24 @@ namespace El_Cautivo.Minigames
             if (!isProcessing) return;
             if (!OnOffSwich)
             {
-                var overtime = Math.Abs(Lab.InGameTime.TotalMinutes - TimeSave.TotalMinutes);
+                var overtime = Math.Abs(Lab.InGameTime.TotalMinutes - Timer.TotalMinutes) /100;
                 if (state != 0 && overtime > 0)
-                    state /=(float)overtime;
+                    state -= (float)overtime;
                 Buffer.Quality *= state;
+                firstElement = null;
+                secondElement = null;
                 Lab.objects.Add(Buffer);
                 OnBackButton();
             }
         }
-
+        
         bool FindIngredients()
         {
             var CollidingBarrels = Lab.objects.Where(x => Collider.Intersects(x.Collider)).ToArray();
             if (CollidingBarrels.Length < 2) return false;
-            firstElement = CollidingBarrels.Where(x => x.Content == Game1.ChemElement.Glutamic_acid).FirstOrDefault();
+            firstElement = CollidingBarrels.Where(x => firstElements.Contains(x.Content)).FirstOrDefault();
             if (firstElement == null) return false;
-            secondElement = CollidingBarrels.Where(x => x.Content == Game1.ChemElement.Crushed_Glicine).FirstOrDefault();
+            secondElement = CollidingBarrels.Where(x => secondElements.Contains(x.Content)).FirstOrDefault();
             if (secondElement != null)
                 return true;
             firstElement = null;
@@ -127,7 +142,7 @@ namespace El_Cautivo.Minigames
             }
             if (IsActive)
             {
-                MixButton.Update();
+                ActionButton.Update();
                 BackButton.Update();
                 OnOffButton.Update();
             }

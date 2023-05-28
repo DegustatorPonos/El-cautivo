@@ -27,11 +27,12 @@ namespace El_Cautivo
             Cumene_hydroperoxide,
             P2P_Wet,
             P2P,
-            Liquid_Meth
+            Liquid_Meth,
+            Meth
         }
         public static Dictionary<ChemElement, string> GetName = new Dictionary<ChemElement, string>
         {
-            { ChemElement.Methilamine, "Mrthilamine" },
+            { ChemElement.Methilamine, "Methilamine" },
             { ChemElement.Solid_meth, "Solid methamphetamine" },
             { ChemElement.Aluminum_dust, "Aluminum" },
             { ChemElement.Glutamic_acid, "Glutamic acid" },
@@ -44,6 +45,7 @@ namespace El_Cautivo
             { ChemElement.P2P_Wet, "Phenyl-2-propanol + water" },
             { ChemElement.P2P, "Phenyl-2-propanol" },
             { ChemElement.Liquid_Meth, "Liquified methamphetamine" },
+            { ChemElement.Meth, "Methamphetamine" },
         };
 
         #endregion
@@ -131,8 +133,8 @@ namespace El_Cautivo
             TitleFont = Content.Load<SpriteFont>("TitleFont");
             Jessie.InitAnimations(Content.Load<Texture2D>("RestSheet"), Content.Load<Texture2D>("ReversedRestSheet"), 
                 Content.Load<Texture2D>("WalkSheetBmp"), Content.Load<Texture2D>("RevercedWalkSheet"));
-            Lab.InitLab();
             Lab.LoadContent(Content);
+            Lab.InitLab();
             MainMenu.Font = TitleFont;
         }
 

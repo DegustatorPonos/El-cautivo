@@ -20,7 +20,7 @@ namespace El_Cautivo
         #region Colliders
         static Rectangle LeftBorder, RightBorder,
             NoteTable, BoilingTable, Refigirator, StorageTable, StorageRoom,
-            CoffeTable, MixingTable, Vaporizer, SmashingTable, DistillingTable;
+            CoffeTable, MixingTable, Vaporizer, SmashingTable, Oxidyzer;
 
         public static void InitColliders()
         {
@@ -37,10 +37,10 @@ namespace El_Cautivo
             MixingTable = new Rectangle(470 / Game1.dScale, (1080 - 290) / Game1.dScale, 350 / Game1.dScale, 290 / Game1.dScale);
             Vaporizer = new Rectangle(820 / Game1.dScale, (1080 - 360) / Game1.dScale, 310 / Game1.dScale, 360 / Game1.dScale);
             SmashingTable = new Rectangle(1130 / Game1.dScale, (1080 - 300) / Game1.dScale, 330 / Game1.dScale, 300 / Game1.dScale);
-            DistillingTable = new Rectangle(1460 / Game1.dScale, (1080 - 300) / Game1.dScale, 270 / Game1.dScale, 300 / Game1.dScale);
+            Oxidyzer = new Rectangle(1460 / Game1.dScale, (1080 - 300) / Game1.dScale, 270 / Game1.dScale, 300 / Game1.dScale);
             Colliders = new Rectangle[] { LeftBorder, RightBorder,
                 NoteTable, BoilingTable, Refigirator, StorageTable, StorageRoom,
-                CoffeTable, MixingTable, Vaporizer, SmashingTable, DistillingTable };
+                CoffeTable, MixingTable, Vaporizer, SmashingTable, Oxidyzer };
             MGs.Clear();
             //InitLab();
             GC.Collect(); //Delete all previous values
@@ -64,18 +64,31 @@ namespace El_Cautivo
 
         public static void InitLab()
         {
+            MGs.Clear();
             MGs.Add(new Guide(new Rectangle(NoteTable.X + (Jessie.Collider.Width / 2), NoteTable.Height,
                 NoteTable.Width - (Jessie.Collider.Width ), MgColliderHeight / Game1.dScale)));
+            MGs.Add(new FreezingMG(new Rectangle(Refigirator.X + (Jessie.Collider.Width / 2), Refigirator.Height,
+                Refigirator.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
             MGs.Add(new ChemTableMG(new Rectangle(StorageTable.X + (Jessie.Collider.Width / 2), StorageTable.Height,
                StorageTable.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
             MGs.Add(new BoilingMG(new Rectangle(BoilingTable.X + (Jessie.Collider.Width / 2), BoilingTable.Height,
                BoilingTable.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
+            MGs.Add(new MixingMg(new Rectangle(MixingTable.X + (Jessie.Collider.Width / 2), MixingTable.Y - (MgColliderHeight / Game1.dScale),
+                MixingTable.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
             MGs.Add(new CrushingMG(new Rectangle(SmashingTable.X + (Jessie.Collider.Width / 2), SmashingTable.Y - (MgColliderHeight / Game1.dScale),
                 SmashingTable.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
+            MGs.Add(new VaporizingMG(new Rectangle(Vaporizer.X + (Jessie.Collider.Width / 2), Vaporizer.Y - (MgColliderHeight / Game1.dScale),
+                Vaporizer.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
+            MGs.Add(new OxidyzingMG(new Rectangle(Oxidyzer.X + (Jessie.Collider.Width / 2), Oxidyzer.Y - (MgColliderHeight / Game1.dScale),
+                Oxidyzer.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
+            LoadContent(content);
         }
-        
+
+        static ContentManager content = null;
+
         public static void LoadContent(ContentManager Content)
         {
+            if (content == null) content = Content;
             HintDots = Content.Load<Texture2D>("Dots");
             foreach (var i in MGs)
                 i.LoadContent(Content);
@@ -94,10 +107,12 @@ namespace El_Cautivo
             deltaTime = DateTime.Now;
             objects.Clear();
             InitObjects();
+            InitLab();
         }
 
         public static void EndDay()
         {
+            GC.Collect();
             Day++;
             BeginDay();
         }
@@ -109,7 +124,7 @@ namespace El_Cautivo
             objects.Add(new Barrel(Game1.ChemElement.Methilamine, new Vector2(1620, 230) / Game1.dScale, 50));
             objects.Add(new Barrel(Game1.ChemElement.Aluminum_dust, new Vector2(1620, 100) / Game1.dScale, 50));
             //DEBUG
-            objects.Add(new Barrel(Game1.ChemElement.Glicine, new Vector2(256, 256) / Game1.dScale, 50));
+            objects.Add(new Barrel(Game1.ChemElement.Liquid_Meth, new Vector2(256, 256) / Game1.dScale, 50));
         }
 
         public static void Draw(SpriteBatch batch)

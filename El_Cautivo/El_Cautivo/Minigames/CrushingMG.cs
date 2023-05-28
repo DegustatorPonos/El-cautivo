@@ -21,7 +21,7 @@ namespace El_Cautivo.Minigames
         Dictionary<Game1.ChemElement, Game1.ChemElement> Recipes = new Dictionary<Game1.ChemElement, Game1.ChemElement>()
         {
             {Game1.ChemElement.Glicine, Game1.ChemElement.Crushed_Glicine},
-            {Game1.ChemElement.Solid_meth, Game1.ChemElement.Methilamine}
+            {Game1.ChemElement.Solid_meth, Game1.ChemElement.Meth}
         };
 
         Vector2 BackPos = new Vector2(10, 814), HitPos;
@@ -94,7 +94,7 @@ namespace El_Cautivo.Minigames
             {
                 IsActive = true;
                 Game1.state = Game1.GameState.MiniGame;
-                if (toCrush == null) toCrush = Lab.objects.Where(b => (b.Content == Game1.ChemElement.Glicine || b.Content == Game1.ChemElement.Methilamine))
+                if (toCrush == null) toCrush = Lab.objects.Where(b => (b.Content == Game1.ChemElement.Glicine || b.Content == Game1.ChemElement.Solid_meth))
                         .Where(e => e.Collider.Intersects(this.Collider))
                         .FirstOrDefault();
                 if (toCrush != null) ToDisplay = Game1.GetName[toCrush.Content] + " -> " + Game1.GetName[Recipes[toCrush.Content]];
