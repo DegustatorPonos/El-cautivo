@@ -31,6 +31,18 @@
 /processorParam:Quality=Best
 /build:Audio/Baby_blue.wav;Audio/Baby_blue
 
+#begin Audio/Five-Finger-Death-Punch-The-End.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Five-Finger-Death-Punch-The-End.wav;Audio/The_end
+
+#begin Audio/Radio.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Radio.wav;Audio/Radio
+
 #begin Background_Lab.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -162,6 +174,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:ColliderTexture.png;ColliderTexture
+
+#begin cthjyt.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:cthjyt.png;DialogWindow
+
+#begin Ending.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Ending.png;End
 
 #begin Font.spritefont
 /importer:FontDescriptionImporter
@@ -385,6 +421,42 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:ReversedRestSheet.png;ReversedRestSheet
+
+#begin Scaracters/добрый не блядушник.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Scaracters/добрый не блядушник.png;Scaracters/Jessie
+
+#begin Scaracters/злой блядушник без кофе.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Scaracters/злой блядушник без кофе.png;Scaracters/Jack_WCoffe
+
+#begin Scaracters/злой блядушник с кофе.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Scaracters/злой блядушник с кофе.png;Scaracters/Jack
 
 #begin SliderBasis.png
 /importer:TextureImporter

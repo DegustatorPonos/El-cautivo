@@ -7,6 +7,7 @@ using System;
 using El_Cautivo.Menus;
 using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
+using El_Cautivo.GameObjects;
 
 namespace El_Cautivo
 {
@@ -56,8 +57,11 @@ namespace El_Cautivo
             ExitMenu,
             Game,
             MiniGame,
+            CutScene,
             Ending
         }
+
+        public static Dictionary<string, Texture2D> ChatPairs;
 
         public static Texture2D ColliderTexture;
         public static bool ShowColliders = false; //FOR DEBUG PURPOSES ONLY
@@ -72,22 +76,16 @@ namespace El_Cautivo
         public static int dScale = 2;  //TODO Сделать норм поддержку других разрешений, а не вот этот костыль 
         //Я еблан и оставил эту хуйню здесь, теперь всё работает через неё
 
-        SoundEffect MainMenuMusic;
-        SoundEffectInstance BGMusicInstance;
-        
+        static SoundEffect MainMenuMusic;
+        static SoundEffectInstance BGMusicInstance;
+
+        public static CutScene CurrencCS = null;
 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            this.Disposed += Game1_Disposed;
-        }
-
-        private void Game1_Disposed(object sender, EventArgs e)
-        {
-         //   _spriteBatch.Dispose();
-           // _graphics.Dispose();
         }
 
         void FSManager()
@@ -114,13 +112,21 @@ namespace El_Cautivo
             _graphics.IsFullScreen = dScale == 1;
             _graphics.ApplyChanges();
             SettingsMenu.FullScreenManager = FSManager;
+            Ending.exit = Quit;
             Lab.InitColliders();
             base.Initialize();
         }
 
+
         protected override void LoadContent()
         {
-            
+
+            ChatPairs = new Dictionary<string, Texture2D>()
+            {
+                {"Jessie", Content.Load<Texture2D>("Scaracters/Jessie")},
+                {"Jack", Content.Load<Texture2D>("Scaracters/Jack_WCoffe")},
+            };
+            Ending.LoadContent(Content);
             MainMenu.LoadContent(Content);
             SettingsMenu.LoadContent(Content);
             ExitMenu.LoadContent(Content);
@@ -138,8 +144,9 @@ namespace El_Cautivo
             MainMenu.Font = TitleFont;
         }
 
-        private void InitBGM(SoundEffect BGMusic)
+        public static void InitBGM(SoundEffect BGMusic)
         {
+            if (BGMusicInstance != null) BGMusicInstance.Stop();
             MainMenuMusic = BGMusic;
             BGMusicInstance = MainMenuMusic.CreateInstance();
             BGMusicInstance.IsLooped = true;
@@ -164,6 +171,12 @@ namespace El_Cautivo
                 case GameState.Game or GameState.MiniGame:
                     Lab.Update();
                     break;
+                case GameState.CutScene:
+                    CurrencCS.Update();
+                    break;
+                case GameState.Ending:
+                    Ending.Update();
+                    break;
             }
             Jessie.Update();
             //if (state == GameState.MainMenu && Keyboard.GetState().IsKeyDown(Keys.Enter)) state = GameState.Game;
@@ -187,6 +200,12 @@ namespace El_Cautivo
                 case GameState.ExitMenu:
                     ExitMenu.Draw(_spriteBatch);
                     break;
+                case GameState.CutScene:
+                    CurrencCS.Draw(_spriteBatch);
+                    break;
+                case GameState.Ending:
+                    Ending.Draw(_spriteBatch);
+                    break;
             }
             _spriteBatch.End();
             base.Draw(gameTime);
@@ -194,14 +213,14 @@ namespace El_Cautivo
 
         void Quit()
         {
-            //  GC.Collect();
-            //Environment.Exit(0);
-
             BGMusicInstance.Stop();
-           
             Exit();
+        }
 
-            
+        void BeginningCSEnding()
+        {
+            CurrencCS = null;
+            state = GameState.Game;
         }
     }
 }

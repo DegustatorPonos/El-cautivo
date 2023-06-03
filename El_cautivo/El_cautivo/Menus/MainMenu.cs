@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using El_Cautivo.EngineExtentions;
 using Microsoft.Xna.Framework.Content;
+using El_Cautivo.GameObjects;
+using Microsoft.Xna.Framework.Audio;
 
 namespace El_Cautivo
 {
@@ -21,12 +23,16 @@ namespace El_Cautivo
         static void InitButtons()
         {
             ExitButton = new Button(ExitPosition/ Game1.dScale, ExitButtonTexture, Quit, 4/ Game1.dScale);
-            BeginButton = new Button(BeginningPosition / Game1.dScale, BeginButtontexture, BeginGame, 4 / Game1.dScale);
+            BeginButton = new Button(BeginningPosition / Game1.dScale, BeginButtontexture, BeginGame, 4 / Game1.dScale, Button.ButtonType.OnUp);
             SettingsButton = new Button(SettingsPosition / Game1.dScale, SettingsButtonTexture, new Action(() => Game1.state = Game1.GameState.SettingsMenu), 4 / Game1.dScale);
         }
-        static Action Quit;
+        public static Action Quit;
+        static ContentManager content;
+        static SoundEffect radio;
         public static void LoadContent(ContentManager Content)
         {
+            radio = Content.Load<SoundEffect>("Audio/Radio");
+            content = Content;
             BG = Content.Load<Texture2D>("MenuBG");
             ExitButtonTexture = Content.Load<Texture2D>("Buttons/ExitButton");
             BeginButtontexture = Content.Load<Texture2D>("Buttons/BeginButton");
@@ -63,6 +69,14 @@ namespace El_Cautivo
         }
 
         static void BeginGame()
+        {
+            Game1.InitBGM(radio);
+            Game1.CurrencCS = new CutScene(content, Game1.ChatPairs, Cutscenes.Beginning, EndBeginningCS);
+            Game1.state = Game1.GameState.CutScene;
+            
+        }
+
+        static void EndBeginningCS()
         {
             Lab.BeginDay();
             Game1.state = Game1.GameState.Game;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using El_Cautivo.EngineExtentions;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -19,8 +20,10 @@ namespace El_Cautivo.Menus
         static Vector2
             DeclinePos = new Vector2(1636, 824),
             ConfirmPos = new Vector2(0, 824);
+        static SoundEffect baby_blue;
         public static void LoadContent(ContentManager Content)
         {
+            baby_blue = Content.Load<SoundEffect>("Audio/Baby_blue");
             BG = Content.Load<Texture2D>("Lab");
             Text = Content.Load<Texture2D>("Buttons/ExitMenu/Text");
             Decline = Content.Load<Texture2D>("Buttons/ExitMenu/Decline");
@@ -31,7 +34,12 @@ namespace El_Cautivo.Menus
         static void InitButtons()
         {
             DeclineButton = new Button(DeclinePos / Game1.dScale, Decline, new Action(() => Game1.state = Game1.GameState.Game), 4/Game1.dScale, Button.ButtonType.OnUp);
-            ConfirmButton = new Button(ConfirmPos / Game1.dScale, Confirm, new Action(() => Game1.state = Game1.GameState.MainMenu), 4 / Game1.dScale, Button.ButtonType.OnUp);
+            ConfirmButton = new Button(ConfirmPos / Game1.dScale, Confirm, OnConfirmButton, 4 / Game1.dScale, Button.ButtonType.OnUp);
+        }
+        static void OnConfirmButton()
+        {
+            Game1.state = Game1.GameState.MainMenu;
+            Game1.InitBGM(baby_blue);
         }
 
         #endregion

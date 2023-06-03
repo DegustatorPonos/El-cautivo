@@ -20,7 +20,7 @@ namespace El_Cautivo
         #region Colliders
         static Rectangle LeftBorder, RightBorder,
             NoteTable, BoilingTable, Refigirator, StorageTable, StorageRoom,
-            CoffeTable, MixingTable, Vaporizer, SmashingTable, Oxidyzer;
+            CoffeTablePos, MixingTable, Vaporizer, SmashingTable, Oxidyzer;
 
         public static void InitColliders()
         {
@@ -33,14 +33,14 @@ namespace El_Cautivo
             StorageTable = new Rectangle(1120 / Game1.dScale, 0, 370 / Game1.dScale, 220 / Game1.dScale);
             StorageRoom = new Rectangle(1490 / Game1.dScale, 0, 410 / Game1.dScale, 10 / Game1.dScale);
 
-            CoffeTable = new Rectangle(190 / Game1.dScale, (1080 - 300) / Game1.dScale, 280 / Game1.dScale, 300 / Game1.dScale);
+            CoffeTablePos = new Rectangle(190 / Game1.dScale, (1080 - 300) / Game1.dScale, 280 / Game1.dScale, 300 / Game1.dScale);
             MixingTable = new Rectangle(470 / Game1.dScale, (1080 - 290) / Game1.dScale, 350 / Game1.dScale, 290 / Game1.dScale);
             Vaporizer = new Rectangle(820 / Game1.dScale, (1080 - 360) / Game1.dScale, 310 / Game1.dScale, 360 / Game1.dScale);
             SmashingTable = new Rectangle(1130 / Game1.dScale, (1080 - 300) / Game1.dScale, 330 / Game1.dScale, 300 / Game1.dScale);
             Oxidyzer = new Rectangle(1460 / Game1.dScale, (1080 - 300) / Game1.dScale, 270 / Game1.dScale, 300 / Game1.dScale);
             Colliders = new Rectangle[] { LeftBorder, RightBorder,
                 NoteTable, BoilingTable, Refigirator, StorageTable, StorageRoom,
-                CoffeTable, MixingTable, Vaporizer, SmashingTable, Oxidyzer };
+                CoffeTablePos, MixingTable, Vaporizer, SmashingTable, Oxidyzer };
             MGs.Clear();
             //InitLab();
             GC.Collect(); //Delete all previous values
@@ -81,10 +81,12 @@ namespace El_Cautivo
                 Vaporizer.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
             MGs.Add(new OxidyzingMG(new Rectangle(Oxidyzer.X + (Jessie.Collider.Width / 2), Oxidyzer.Y - (MgColliderHeight / Game1.dScale),
                 Oxidyzer.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
+            MGs.Add(new CoffeTable(new Rectangle(CoffeTablePos.X + (Jessie.Collider.Width / 2), CoffeTablePos.Y - (MgColliderHeight / Game1.dScale),
+                CoffeTablePos.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
             LoadContent(content);
         }
 
-        static ContentManager content = null;
+        public static ContentManager content = null;
 
         public static void LoadContent(ContentManager Content)
         {
@@ -110,11 +112,41 @@ namespace El_Cautivo
             InitLab();
         }
 
+        static int FUps = 0;
+        public static bool isPoisoned = false;
+
         public static void EndDay()
         {
+            var meth = objects.Where(x => x.Content == Game1.ChemElement.Meth).FirstOrDefault();
             GC.Collect();
             Day++;
-            BeginDay();
+            Game1.state = Game1.GameState.CutScene;
+            if (isPoisoned)
+            {
+                Game1.CurrencCS = new CutScene(content, Game1.ChatPairs, Cutscenes.DihareaEnding, EndGame);
+                return;
+            }
+            if (Day == 10)
+            {
+                Game1.CurrencCS = new CutScene(content, Game1.ChatPairs, Cutscenes.WaltEnding, EndGame);
+                return;
+            }
+            var BadResult = FUps == 0 ? new CutScene(content, Game1.ChatPairs, Cutscenes.FirstFUp, BeginDay) :
+                 new CutScene(content, Game1.ChatPairs, Cutscenes.SecondFUp, EndGame);
+            if (meth == null)
+                Game1.CurrencCS = new CutScene(content, Game1.ChatPairs, Cutscenes.NoMethDayEnding, new Action(() =>
+                    Game1.CurrencCS = BadResult));
+            else
+            if (meth.Quality >= 0.5f)
+                Game1.CurrencCS = new CutScene(content, Game1.ChatPairs, Cutscenes.PositiveDayEnding, BeginDay);
+            else Game1.CurrencCS = new CutScene(content, Game1.ChatPairs, Cutscenes.NegativeDayEnding, new Action(() =>
+                    Game1.CurrencCS = BadResult));
+        }
+
+        static void EndGame()
+        {
+            Game1.state = Game1.GameState.Ending;
+            Ending.Begin();
         }
 
         static void InitObjects()
@@ -124,7 +156,7 @@ namespace El_Cautivo
             objects.Add(new Barrel(Game1.ChemElement.Methilamine, new Vector2(1620, 230) / Game1.dScale, 50));
             objects.Add(new Barrel(Game1.ChemElement.Aluminum_dust, new Vector2(1620, 100) / Game1.dScale, 50));
             //DEBUG
-            objects.Add(new Barrel(Game1.ChemElement.Liquid_Meth, new Vector2(256, 256) / Game1.dScale, 50));
+            objects.Add(new Barrel(Game1.ChemElement.P2P_Wet, new Vector2(256, 256) / Game1.dScale, 50));
         }
 
         public static void Draw(SpriteBatch batch)
