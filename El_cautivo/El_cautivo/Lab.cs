@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using El_Cautivo.Menus;
@@ -24,20 +23,20 @@ namespace El_Cautivo
 
         public static void InitColliders()
         {
-            LeftBorder = new Rectangle(0, 0, 190 / Game1.dScale, 1080 / Game1.dScale);
-            RightBorder = new Rectangle((1920 - 190) / Game1.dScale, 0, 190 / Game1.dScale, 1080 / Game1.dScale);
+            LeftBorder = new Rectangle(0, 0, (int)(190 / Game1.dScale), (int)(1080 / Game1.dScale));
+            RightBorder = new Rectangle((int)((1920 - 190) / Game1.dScale), 0, (int)(190 / Game1.dScale), (int)(1080 / Game1.dScale));
 
-            NoteTable = new Rectangle(190 / Game1.dScale, 0, 290 / Game1.dScale, 250 / Game1.dScale);
-            BoilingTable = new Rectangle(480 / Game1.dScale, 0, 440 / Game1.dScale, 240 / Game1.dScale);
-            Refigirator = new Rectangle(920 / Game1.dScale, 0, 200 / Game1.dScale, 250 / Game1.dScale);
-            StorageTable = new Rectangle(1120 / Game1.dScale, 0, 370 / Game1.dScale, 220 / Game1.dScale);
-            StorageRoom = new Rectangle(1490 / Game1.dScale, 0, 410 / Game1.dScale, 10 / Game1.dScale);
+            NoteTable = new Rectangle((int)(190 / Game1.dScale), 0, (int)(290 / Game1.dScale), (int)(250 / Game1.dScale));
+            BoilingTable = new Rectangle((int)(480 / Game1.dScale), 0, (int)(440 / Game1.dScale), (int)(240 / Game1.dScale));
+            Refigirator = new Rectangle((int)(920 / Game1.dScale), 0, (int)(200 / Game1.dScale), (int)(250 / Game1.dScale));
+            StorageTable = new Rectangle((int)(1120 / Game1.dScale), 0, (int)(370 / Game1.dScale), (int)(220 / Game1.dScale));
+            StorageRoom = new Rectangle((int)(1490 / Game1.dScale), 0, (int)(410 / Game1.dScale), (int)(10 / Game1.dScale));
 
-            CoffeTablePos = new Rectangle(190 / Game1.dScale, (1080 - 300) / Game1.dScale, 280 / Game1.dScale, 300 / Game1.dScale);
-            MixingTable = new Rectangle(470 / Game1.dScale, (1080 - 290) / Game1.dScale, 350 / Game1.dScale, 290 / Game1.dScale);
-            Vaporizer = new Rectangle(820 / Game1.dScale, (1080 - 360) / Game1.dScale, 310 / Game1.dScale, 360 / Game1.dScale);
-            SmashingTable = new Rectangle(1130 / Game1.dScale, (1080 - 300) / Game1.dScale, 330 / Game1.dScale, 300 / Game1.dScale);
-            Oxidyzer = new Rectangle(1460 / Game1.dScale, (1080 - 300) / Game1.dScale, 270 / Game1.dScale, 300 / Game1.dScale);
+            CoffeTablePos = new Rectangle((int)(190 / Game1.dScale), (int)((1080 - 300) / Game1.dScale), (int)(280 / Game1.dScale), (int)(300 / Game1.dScale));
+            MixingTable = new Rectangle((int)(470 / Game1.dScale), (int)((1080 - 290) / Game1.dScale), (int)(350 / Game1.dScale), (int)(290 / Game1.dScale));
+            Vaporizer = new Rectangle((int)(820 / Game1.dScale), (int)((1080 - 360) / Game1.dScale), (int)(310 / Game1.dScale), (int)(360 / Game1.dScale));
+            SmashingTable = new Rectangle((int)(1130 / Game1.dScale), (int)((1080 - 300) / Game1.dScale), (int)(330 / Game1.dScale), (int)(300 / Game1.dScale));
+            Oxidyzer = new Rectangle((int)(1460 / Game1.dScale), (int)((1080 - 300) / Game1.dScale), (int)(270 / Game1.dScale), (int)(300 / Game1.dScale));
             Colliders = new Rectangle[] { LeftBorder, RightBorder,
                 NoteTable, BoilingTable, Refigirator, StorageTable, StorageRoom,
                 CoffeTablePos, MixingTable, Vaporizer, SmashingTable, Oxidyzer };
@@ -66,23 +65,23 @@ namespace El_Cautivo
         {
             MGs.Clear();
             MGs.Add(new Guide(new Rectangle(NoteTable.X + (Jessie.Collider.Width / 2), NoteTable.Height,
-                NoteTable.Width - (Jessie.Collider.Width ), MgColliderHeight / Game1.dScale)));
+                NoteTable.Width - (Jessie.Collider.Width ), (int)(MgColliderHeight / Game1.dScale))));
             MGs.Add(new FreezingMG(new Rectangle(Refigirator.X + (Jessie.Collider.Width / 2), Refigirator.Height,
-                Refigirator.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
+                Refigirator.Width - (Jessie.Collider.Width), (int)(MgColliderHeight / Game1.dScale))));
             MGs.Add(new ChemTableMG(new Rectangle(StorageTable.X + (Jessie.Collider.Width / 2), StorageTable.Height,
-               StorageTable.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
+               StorageTable.Width - (Jessie.Collider.Width), (int)(MgColliderHeight / Game1.dScale))));
             MGs.Add(new BoilingMG(new Rectangle(BoilingTable.X + (Jessie.Collider.Width / 2), BoilingTable.Height,
-               BoilingTable.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
-            MGs.Add(new MixingMg(new Rectangle(MixingTable.X + (Jessie.Collider.Width / 2), MixingTable.Y - (MgColliderHeight / Game1.dScale),
-                MixingTable.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
-            MGs.Add(new CrushingMG(new Rectangle(SmashingTable.X + (Jessie.Collider.Width / 2), SmashingTable.Y - (MgColliderHeight / Game1.dScale),
-                SmashingTable.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
-            MGs.Add(new VaporizingMG(new Rectangle(Vaporizer.X + (Jessie.Collider.Width / 2), Vaporizer.Y - (MgColliderHeight / Game1.dScale),
-                Vaporizer.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
-            MGs.Add(new OxidyzingMG(new Rectangle(Oxidyzer.X + (Jessie.Collider.Width / 2), Oxidyzer.Y - (MgColliderHeight / Game1.dScale),
-                Oxidyzer.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
-            MGs.Add(new CoffeTable(new Rectangle(CoffeTablePos.X + (Jessie.Collider.Width / 2), CoffeTablePos.Y - (MgColliderHeight / Game1.dScale),
-                CoffeTablePos.Width - (Jessie.Collider.Width), MgColliderHeight / Game1.dScale)));
+               BoilingTable.Width - (Jessie.Collider.Width), (int)(MgColliderHeight / Game1.dScale))));
+            MGs.Add(new MixingMg(new Rectangle(MixingTable.X + (Jessie.Collider.Width / 2), (int)(MixingTable.Y - (MgColliderHeight / Game1.dScale)),
+                MixingTable.Width - (Jessie.Collider.Width), (int)(MgColliderHeight / Game1.dScale))));
+            MGs.Add(new CrushingMG(new Rectangle(SmashingTable.X + (Jessie.Collider.Width / 2), (int)(SmashingTable.Y - (MgColliderHeight / Game1.dScale)),
+                SmashingTable.Width - (Jessie.Collider.Width), (int)(MgColliderHeight / Game1.dScale))));
+            MGs.Add(new VaporizingMG(new Rectangle(Vaporizer.X + (Jessie.Collider.Width / 2), (int)(Vaporizer.Y - (MgColliderHeight / Game1.dScale)),
+                Vaporizer.Width - (Jessie.Collider.Width), (int)(MgColliderHeight / Game1.dScale))));
+            MGs.Add(new OxidyzingMG(new Rectangle(Oxidyzer.X + (Jessie.Collider.Width / 2), (int)(Oxidyzer.Y - (MgColliderHeight / Game1.dScale)),
+                Oxidyzer.Width - (Jessie.Collider.Width), (int)(MgColliderHeight / Game1.dScale))));
+            MGs.Add(new CoffeTable(new Rectangle(CoffeTablePos.X + (Jessie.Collider.Width / 2), (int)(CoffeTablePos.Y - (MgColliderHeight / Game1.dScale)),
+                CoffeTablePos.Width - (Jessie.Collider.Width), (int)(MgColliderHeight / Game1.dScale))));
             LoadContent(content);
         }
 
@@ -104,6 +103,7 @@ namespace El_Cautivo
 
         public static void BeginDay()
         {
+            Game1.state = Game1.GameState.Game;
             Jessie.Position = new Vector2(512, 512)/Game1.dScale;
             InGameTime = new TimeSpan(9,0,0);
             deltaTime = DateTime.Now;
@@ -134,13 +134,16 @@ namespace El_Cautivo
             var BadResult = FUps == 0 ? new CutScene(content, Game1.ChatPairs, Cutscenes.FirstFUp, BeginDay) :
                  new CutScene(content, Game1.ChatPairs, Cutscenes.SecondFUp, EndGame);
             if (meth == null)
+            {
+                FUps++;
                 Game1.CurrencCS = new CutScene(content, Game1.ChatPairs, Cutscenes.NoMethDayEnding, new Action(() =>
                     Game1.CurrencCS = BadResult));
+            }
             else
             if (meth.Quality >= 0.5f)
                 Game1.CurrencCS = new CutScene(content, Game1.ChatPairs, Cutscenes.PositiveDayEnding, BeginDay);
             else Game1.CurrencCS = new CutScene(content, Game1.ChatPairs, Cutscenes.NegativeDayEnding, new Action(() =>
-                    Game1.CurrencCS = BadResult));
+                    Game1.CurrencCS = BadResult)); //holy fuck.
         }
 
         static void EndGame()
@@ -156,7 +159,7 @@ namespace El_Cautivo
             objects.Add(new Barrel(Game1.ChemElement.Methilamine, new Vector2(1620, 230) / Game1.dScale, 50));
             objects.Add(new Barrel(Game1.ChemElement.Aluminum_dust, new Vector2(1620, 100) / Game1.dScale, 50));
             //DEBUG
-            objects.Add(new Barrel(Game1.ChemElement.P2P_Wet, new Vector2(256, 256) / Game1.dScale, 50));
+            //objects.Add(new Barrel(Game1.ChemElement.P2P_Wet, new Vector2(256, 256) / Game1.dScale, 50));
         }
 
         public static void Draw(SpriteBatch batch)
@@ -179,8 +182,8 @@ namespace El_Cautivo
         {
             if ((DateTime.Now - deltaTime).TotalMilliseconds > 1000)
             {
-                InGameTime += Minute;
-                deltaTime = DateTime.Now;
+                InGameTime += Minute;      //MEMORY LEAK YEEEESSSSS
+                deltaTime = DateTime.Now; 
             }
             if (InGameTime.Equals(EndTime)) EndDay();
 

@@ -1,12 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using El_Cautivo.EngineExtentions;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 
 namespace El_Cautivo.GameObjects
@@ -43,9 +38,9 @@ namespace El_Cautivo.GameObjects
                     Texture = Game1.BarrelTexture;
                     break;
             }
-            Collider = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width * 6 / Game1.dScale,
-                Texture.Height * 6 / Game1.dScale);
-            BButton =  new Button(Position, Texture, new Action(() => isPressed = true), 6 / Game1.dScale) {CoveringColor = Color.White};
+            Collider = new Rectangle((int)Position.X, (int)Position.Y, (int)(Texture.Width * 6 / Game1.dScale),
+                (int)(Texture.Height * 6 / Game1.dScale));
+            BButton =  new Button(Position, Texture, new Action(() => isPressed = true), (int)(6 / Game1.dScale)) {CoveringColor = Color.White};
         }
         public void Draw(SpriteBatch batch)
         {

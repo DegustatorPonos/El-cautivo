@@ -3,11 +3,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using El_Cautivo.GameObjects;
 
@@ -53,9 +48,9 @@ namespace El_Cautivo.Minigames
             CumPos = new Vector2(10, (1080 - (GetCumeineTexture.Height * 2)) / 2);
             GlicPos = new Vector2((1920 - GetGlicineTexture.Width*2) - 10, (1080 - (GetCumeineTexture.Height * 2)) / 2);
 
-            BackButton = new Button(BackPos / Game1.dScale, BackTexture, OnBackButton, 4 / Game1.dScale, Button.ButtonType.OnUp);
-            GetGlicine = new Button(GlicPos / Game1.dScale, GetGlicineTexture, SummonGlicine, 2 / Game1.dScale, Button.ButtonType.OnUp);
-            GetCumeine = new Button(CumPos / Game1.dScale, GetCumeineTexture, SummonCumeine, 2 / Game1.dScale, Button.ButtonType.OnUp);
+            BackButton = new Button(BackPos / Game1.dScale, BackTexture, OnBackButton, (int)(4 / Game1.dScale), Button.ButtonType.OnUp);
+            GetGlicine = new Button(GlicPos / Game1.dScale, GetGlicineTexture, SummonGlicine, (int)(2 / Game1.dScale), Button.ButtonType.OnUp);
+            GetCumeine = new Button(CumPos / Game1.dScale, GetCumeineTexture, SummonCumeine, (int)(2 / Game1.dScale), Button.ButtonType.OnUp);
         }
 
         void OnBackButton()

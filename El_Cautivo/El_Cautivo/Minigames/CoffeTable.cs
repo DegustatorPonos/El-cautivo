@@ -1,15 +1,9 @@
 ﻿using El_Cautivo.EngineExtentions;
-using El_Cautivo.GameObjects;
-using El_Cautivo.Menus;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace El_Cautivo.Minigames
 {
@@ -53,9 +47,9 @@ namespace El_Cautivo.Minigames
             DrikPos = new Vector2(10, (1080 - (DrinkTexture.Height * 2)) / 2);
             MixPos = new Vector2((1920 - MixTexture.Width * 2) - 10, (1080 - (MixTexture.Height * 2)) / 2);
 
-            BackButton = new Button(BackPos / Game1.dScale, BackTexture, OnBackButton, 4 / Game1.dScale, Button.ButtonType.OnUp);
-            Drink = new Button(DrikPos / Game1.dScale, DrinkTexture, DrinkAction, 2 / Game1.dScale, Button.ButtonType.OnUp);
-            Mix = new Button(MixPos / Game1.dScale, MixTexture, Mixing, 2 / Game1.dScale, Button.ButtonType.OnUp);
+            BackButton = new Button(BackPos / Game1.dScale, BackTexture, OnBackButton, (int)(4 / Game1.dScale), Button.ButtonType.OnUp);
+            Drink = new Button(DrikPos / Game1.dScale, DrinkTexture, DrinkAction, (int)(2 / Game1.dScale), Button.ButtonType.OnUp);
+            Mix = new Button(MixPos / Game1.dScale, MixTexture, Mixing, (int)(2 / Game1.dScale), Button.ButtonType.OnUp);
         }
 
         void OnBackButton()

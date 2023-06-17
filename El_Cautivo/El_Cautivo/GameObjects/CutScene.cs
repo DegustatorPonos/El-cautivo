@@ -5,9 +5,6 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace El_Cautivo.GameObjects
 {
@@ -38,7 +35,7 @@ namespace El_Cautivo.GameObjects
             voice = content.Load<Texture2D>("DialogWindow");
             BG = content.Load<Texture2D>("Lab");
 
-            NextButton = new Button(NextPos / Game1.dScale, NextTexture, new Action(() => pos++), 4 / Game1.dScale, Button.ButtonType.OnUp); 
+            NextButton = new Button(NextPos / Game1.dScale, NextTexture, new Action(() => pos++), (int)(4 / Game1.dScale), Button.ButtonType.OnUp); 
         }
 
         public void Draw(SpriteBatch batch)

@@ -29,9 +29,9 @@ namespace El_Cautivo.Menus
         static void InitButtons()
         {
             BackButton = new Button(BackPos/Game1.dScale, BackTexture, new Action(() => Game1.state = Game1.GameState.MainMenu),
-                4/Game1.dScale, Button.ButtonType.OnUp);
+                (int)(4 /Game1.dScale), Button.ButtonType.OnUp);
             FSButton = new Button(FSPos/Game1.dScale, FullScreenTexture, FullScreenManager,
-                4/Game1.dScale, Button.ButtonType.OnUp);
+                (int)(4 /Game1.dScale), Button.ButtonType.OnUp);
             VolumeSlider = new Slider(SliderBasisTexture, SliderTexture, SliderPos/Game1.dScale);
         }
         #endregion

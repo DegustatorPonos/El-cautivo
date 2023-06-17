@@ -1,10 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using El_Cautivo.EngineExtentions;
 using Microsoft.Xna.Framework;
@@ -63,8 +60,8 @@ namespace El_Cautivo.Minigames
 
             HitPos = new Vector2((1920 - (HitTexture.Width * 2)), 1080 - (HitTexture.Height * 2)) / 2;
 
-            BackButton = new Button(BackPos / Game1.dScale, BackTexture, OnBackButton, 4 / Game1.dScale, Button.ButtonType.OnUp);
-            HitButton = new Button(HitPos / Game1.dScale, HitTexture, OnHitButton, 2 / Game1.dScale, Button.ButtonType.OnUp);
+            BackButton = new Button(BackPos / Game1.dScale, BackTexture, OnBackButton, (int)(4 / Game1.dScale), Button.ButtonType.OnUp);
+            HitButton = new Button(HitPos / Game1.dScale, HitTexture, OnHitButton, (int)(2 / Game1.dScale), Button.ButtonType.OnUp);
         }
 
         void OnBackButton()

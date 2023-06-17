@@ -1,12 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "r/IxP5WIzbbBweMIWxS8WBxaHFpTSV98O2LhTM9qzdg7Uw2dqoXyGjNBPG3LxURcCPMOeTdDNh+XfkJWUceJug==",
+  "dgSpecHash": "6lO2lOP+KsHenQa0Yo6Tno5L6IFz6EUMKuR4U1X2Li7RMjxXffHl+lF68GQTQUz2TuFjPQmms2cKMOAB5ygaTg==",
   "success": true,
   "projectFilePath": "D:\\Git\\El-cautivo\\El_cautivo\\El_Cautivo\\El_Cautivo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\qwawe\\.nuget\\packages\\mgcb.windows\\3.5.1.1\\mgcb.windows.3.5.1.1.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\qwawe\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
-    "C:\\Users\\qwawe\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
+    "C:\\Users\\qwawe\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\qwawe\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
+    "C:\\Users\\qwawe\\.nuget\\packages\\nunit\\3.13.3\\nunit.3.13.3.nupkg.sha512",
+    "C:\\Users\\qwawe\\.nuget\\packages\\nunit3testadapter\\4.5.0\\nunit3testadapter.4.5.0.nupkg.sha512",
+    "C:\\Users\\qwawe\\.nuget\\packages\\xunit.abstractions\\2.0.3\\xunit.abstractions.2.0.3.nupkg.sha512",
+    "C:\\Users\\qwawe\\.nuget\\packages\\xunit.extensibility.core\\2.4.2\\xunit.extensibility.core.2.4.2.nupkg.sha512"
   ],
   "logs": []
 }

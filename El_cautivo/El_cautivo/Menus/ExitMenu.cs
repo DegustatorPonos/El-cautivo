@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using El_Cautivo.EngineExtentions;
 using Microsoft.Xna.Framework;
@@ -33,8 +29,8 @@ namespace El_Cautivo.Menus
 
         static void InitButtons()
         {
-            DeclineButton = new Button(DeclinePos / Game1.dScale, Decline, new Action(() => Game1.state = Game1.GameState.Game), 4/Game1.dScale, Button.ButtonType.OnUp);
-            ConfirmButton = new Button(ConfirmPos / Game1.dScale, Confirm, OnConfirmButton, 4 / Game1.dScale, Button.ButtonType.OnUp);
+            DeclineButton = new Button(DeclinePos / Game1.dScale, Decline, new Action(() => Game1.state = Game1.GameState.Game), (int)(4 /Game1.dScale), Button.ButtonType.OnUp);
+            ConfirmButton = new Button(ConfirmPos / Game1.dScale, Confirm, OnConfirmButton, (int)(4 / Game1.dScale), Button.ButtonType.OnUp);
         }
         static void OnConfirmButton()
         {

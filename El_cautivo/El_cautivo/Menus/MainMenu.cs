@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using El_Cautivo.EngineExtentions;
 using Microsoft.Xna.Framework.Content;
 using El_Cautivo.GameObjects;
@@ -22,9 +17,9 @@ namespace El_Cautivo
         }
         static void InitButtons()
         {
-            ExitButton = new Button(ExitPosition/ Game1.dScale, ExitButtonTexture, Quit, 4/ Game1.dScale);
-            BeginButton = new Button(BeginningPosition / Game1.dScale, BeginButtontexture, BeginGame, 4 / Game1.dScale, Button.ButtonType.OnUp);
-            SettingsButton = new Button(SettingsPosition / Game1.dScale, SettingsButtonTexture, new Action(() => Game1.state = Game1.GameState.SettingsMenu), 4 / Game1.dScale);
+            ExitButton = new Button(ExitPosition/ Game1.dScale, ExitButtonTexture, Quit, (int)(4 / Game1.dScale));
+            BeginButton = new Button(BeginningPosition / Game1.dScale, BeginButtontexture, BeginGame, (int)(4 / Game1.dScale), Button.ButtonType.OnUp);
+            SettingsButton = new Button(SettingsPosition / Game1.dScale, SettingsButtonTexture, new Action(() => Game1.state = Game1.GameState.SettingsMenu), (int)(4 / Game1.dScale));
         }
         public static Action Quit;
         static ContentManager content;

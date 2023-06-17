@@ -7,8 +7,6 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace El_Cautivo.Minigames
 {
@@ -70,9 +68,9 @@ namespace El_Cautivo.Minigames
             ActTexture = new Vector2((1920/2), (1080-ActionTexture.Height)/2);
             OnOffPos = new Vector2(1920-(OnTexture.Width*2), 1080-(OffTexture.Height*2));
 
-            BackButton = new Button(BackPos / Game1.dScale, BackTexture, OnBackButton, 4 / Game1.dScale, Button.ButtonType.OnUp);
-            ActionButton = new Button(ActTexture / Game1.dScale, ActionTexture, OnActionButton, 2/Game1.dScale, Button.ButtonType.OnUp);
-            OnOffButton = new Button(OnOffPos / Game1.dScale, OffTexture, OnOnOffButton, 2 / Game1.dScale, Button.ButtonType.OnUp);
+            BackButton = new Button(BackPos / Game1.dScale, BackTexture, OnBackButton, (int)(4 / Game1.dScale), Button.ButtonType.OnUp);
+            ActionButton = new Button(ActTexture / Game1.dScale, ActionTexture, OnActionButton, (int)(2 /Game1.dScale), Button.ButtonType.OnUp);
+            OnOffButton = new Button(OnOffPos / Game1.dScale, OffTexture, OnOnOffButton, (int)(2 / Game1.dScale), Button.ButtonType.OnUp);
         }
 
         private void OnBackButton()
@@ -117,7 +115,7 @@ namespace El_Cautivo.Minigames
                 OnBackButton();
             }
         }
-        
+        public virtual void sedActDescription(string descr) => ToDisplay = descr;
         bool FindIngredients()
         {
             var CollidingBarrels = Lab.objects.Where(x => Collider.Intersects(x.Collider)).ToArray();

@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace El_Cautivo.Minigames
 {
@@ -91,11 +90,11 @@ namespace El_Cautivo.Minigames
             UpPos = new Vector2(minusPos.X, DownPos.Y - 10 - MinusTexture.Height * 2);
 
 
-            BackButton = new Button(BackPos / Game1.dScale, BackTexture, OnBackButton, 4 / Game1.dScale, Button.ButtonType.OnUp);
-            PlusButton = new Button(plusPos / Game1.dScale, Plustexture, Add, 2 / Game1.dScale, Button.ButtonType.OnUp);
-            minusButton = new Button(minusPos/ Game1.dScale, MinusTexture, Subtract, 2 / Game1.dScale, Button.ButtonType.OnUp);
-            UpButton = new Button(UpPos / Game1.dScale, UpTexture, Up, 2 / Game1.dScale, Button.ButtonType.OnUp);
-            DownButton = new Button(DownPos / Game1.dScale, DownTexture, Down, 2 / Game1.dScale, Button.ButtonType.OnUp);
+            BackButton = new Button(BackPos / Game1.dScale, BackTexture, OnBackButton, (int)(4 / Game1.dScale), Button.ButtonType.OnUp);
+            PlusButton = new Button(plusPos / Game1.dScale, Plustexture, Add, (int)(2 / Game1.dScale), Button.ButtonType.OnUp);
+            minusButton = new Button(minusPos/ Game1.dScale, MinusTexture, Subtract, (int)(2 / Game1.dScale), Button.ButtonType.OnUp);
+            UpButton = new Button(UpPos / Game1.dScale, UpTexture, Up, (int)(2 / Game1.dScale), Button.ButtonType.OnUp);
+            DownButton = new Button(DownPos / Game1.dScale, DownTexture, Down, (int)(2 / Game1.dScale), Button.ButtonType.OnUp);
         }
 
         private void Up() => position = Math.Max(0, position - 1);

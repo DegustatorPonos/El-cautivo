@@ -1,6 +1,4 @@
-﻿using System;
-using El_Cautivo.GameObjects;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -91,7 +89,8 @@ namespace El_Cautivo
         /// </summary>
         private static bool CheckForCollision(Vector2 shift)
         {
-            var ShiftedCollider = new Rectangle((int)shift.X + Collider.X, (int)shift.Y + Collider.Y, Collider.Width, Collider.Height);
+            shift *= Game1.dScale;
+            var ShiftedCollider = new Rectangle((int)(shift.X + Collider.X), (int)(shift.Y + Collider.Y), Collider.Width , Collider.Height);
             foreach(var collider in Lab.Colliders)
                 if(ShiftedCollider.Intersects(collider)) return false;
             return true;
@@ -101,7 +100,7 @@ namespace El_Cautivo
         {
             //if (Game1.dScale == 1) Position *= 2;
             //else Position /= 2;
-            Collider = new Rectangle(0, 0, (int)RestAnimation.Scale.X * (2 / Game1.dScale), (int)RestAnimation.Scale.X * (2 / Game1.dScale));
+            Collider = new Rectangle(0, 0, (int)(RestAnimation.Scale.X * (2 / Game1.dScale)), (int)(RestAnimation.Scale.X * (2 / Game1.dScale)));
         }
 
     }

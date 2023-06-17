@@ -28,8 +28,8 @@ namespace El_Cautivo.EngineExtentions
         public bool IsCovered { get; private set; }
         public Color CoveringColor = Color.Gray;
         Color overlayColor = Color.White;
-        Rectangle buttonRectangle;
-        Action action;
+        public Rectangle buttonRectangle;
+        public Action action { get; }
         public Vector2 Position;
         Texture2D texture;
         public int Scale = 1;

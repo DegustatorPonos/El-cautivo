@@ -1,7 +1,5 @@
-﻿using El_Cautivo.EngineExtentions;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System;
 
 using El_Cautivo.Menus;
@@ -73,7 +71,9 @@ namespace El_Cautivo
         public static GameState state;
         public static double MusicVolume = 1;
         public static bool IsFSAvaliable;
-        public static int dScale = 2;  //TODO Сделать норм поддержку других разрешений, а не вот этот костыль 
+
+        public static Vector2 dShift = Vector2.Zero;
+        public static float dScale = 2f;  //TODO Сделать норм поддержку других разрешений, а не вот этот костыль 
         //Я еблан и оставил эту хуйню здесь, теперь всё работает через неё
 
         static SoundEffect MainMenuMusic;
@@ -91,30 +91,54 @@ namespace El_Cautivo
         void FSManager()
         {
             BGMusicInstance.Stop();
-            dScale = dScale == 1 ? 2 : 1;
+            //dScale = dScale == 1 ? 2 : 1;
+            if (!_graphics.IsFullScreen)
+            {
+                SetFSInfo();
+            }
+            else
+            {
+                dScale = 2; //(1920 * 1080) / 2
+            }
             Initialize();
             Jessie.ResizeCollider();
             Lab.InitColliders();
+            _graphics.IsFullScreen = !_graphics.IsFullScreen;
             _graphics.ApplyChanges();
         }
 
         protected override void Initialize()
         {
-            IsFSAvaliable = (GraphicsDevice.Adapter.CurrentDisplayMode.Width == 1920 && 
-                GraphicsDevice.Adapter.CurrentDisplayMode.Height == 1080);
+            IsFSAvaliable = (GraphicsDevice.Adapter.CurrentDisplayMode.Width <= 1920 && 
+                GraphicsDevice.Adapter.CurrentDisplayMode.Height <= 1080);
             MainMenu.Init(Quit);
             Jessie.Scale = new Vector2(8, 8)/dScale;
             Jessie.speed = 2 / dScale;
             Jessie.Position = new Vector2(512, 512) / dScale;
             state = GameState.MainMenu;
-            _graphics.PreferredBackBufferHeight = 1080/dScale;
-            _graphics.PreferredBackBufferWidth = 1920/dScale;
-            _graphics.IsFullScreen = dScale == 1;
+            _graphics.PreferredBackBufferHeight = (int)(1080 /dScale);
+            _graphics.PreferredBackBufferWidth = (int)(1920 /dScale);
+            
             _graphics.ApplyChanges();
             SettingsMenu.FullScreenManager = FSManager;
             Ending.exit = Quit;
             Lab.InitColliders();
             base.Initialize();
+        }
+
+        private void SetFSInfo()
+        {
+            dScale = Math.Max(1080 / (float)GraphicsDevice.Adapter.CurrentDisplayMode.Height, 1920 / (float)GraphicsDevice.Adapter.CurrentDisplayMode.Width);
+            float shiftX = (GraphicsDevice.Adapter.CurrentDisplayMode.Width - (1920 / dScale)) / 2;
+            float shiftY = (GraphicsDevice.Adapter.CurrentDisplayMode.Height - (1080 / dScale)) / 2;
+            dShift = new Vector2(shiftX, shiftY);
+        }
+
+        private bool getShiftOrientation()
+        {
+            var VerticalRatio = 1920/ GraphicsDevice.Adapter.CurrentDisplayMode.Width;
+            return GraphicsDevice.Adapter.CurrentDisplayMode.Height / VerticalRatio > 1080;
+            //true = horizontal 
         }
 
 
