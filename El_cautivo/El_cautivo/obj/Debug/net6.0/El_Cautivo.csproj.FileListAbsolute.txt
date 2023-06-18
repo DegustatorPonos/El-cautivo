@@ -77,3 +77,8 @@ D:\Git\El-cautivo\El_Cautivo\El_Cautivo\bin\Debug\net6.0\nunit.engine.core.dll
 D:\Git\El-cautivo\El_Cautivo\El_Cautivo\bin\Debug\net6.0\testcentric.engine.metadata.dll
 D:\Git\El-cautivo\El_Cautivo\El_Cautivo\bin\Debug\net6.0\xunit.abstractions.dll
 D:\Git\El-cautivo\El_Cautivo\El_Cautivo\bin\Debug\net6.0\xunit.core.dll
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\MGContent\Boiling\Heat.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\MGContent\CoffeTable\Drink.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\MGContent\Freezing\Freeze.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\MGContent\Oxidizing\OxidyzeButton.xnb
+D:\Git\El-cautivo\El_cautivo\El_Cautivo\bin\Debug\net6.0\Content\MGContent\Vaporizer\Boil.xnb

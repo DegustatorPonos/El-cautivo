@@ -20,7 +20,7 @@ namespace El_Cautivo.Minigames
         bool IsColliding = false, IsActive = false, isProcessing = false, OnOffSwich = false;
         string ToDisplay = "F - use fridge";
         int targetTemp = 0;
-        public virtual string GetActionTextureName() => "MGContent/Oxidizing/DoAction";
+        public virtual string GetActionTextureName() => "MGContent/Freezing/Freeze";
         float state = 1;
         TimeSpan Timer;
         Barrel Input, Buffer;

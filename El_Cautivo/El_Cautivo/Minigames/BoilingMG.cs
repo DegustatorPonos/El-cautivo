@@ -18,7 +18,7 @@ namespace El_Cautivo.Minigames
         Rectangle Collider;
         bool IsColliding = false, IsActive = false, isProcessing = false, OnOffSwich = false;
         string ToDisplay = "F - use boiler";
-        public virtual string GetActionTextureName() => "MGContent/Boiling/MixButton";
+        public virtual string GetActionTextureName() => "MGContent/Boiling/Heat";
         float state = 1;
         TimeSpan TimeSave, Timer;
         Barrel firstElement, secondElement, Buffer;

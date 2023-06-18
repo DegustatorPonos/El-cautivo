@@ -17,6 +17,6 @@ namespace El_Cautivo.Tests
             Assert.AreEqual(button.buttonRectangle.Size, prevCollider.Size);
             Assert.AreNotEqual(button.buttonRectangle.Location, prevCollider.Location);
         }
-
+         //Doesn't matter at all
     }
 }

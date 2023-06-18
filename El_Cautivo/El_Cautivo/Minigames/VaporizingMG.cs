@@ -21,7 +21,7 @@ namespace El_Cautivo.Minigames
         bool IsColliding = false, IsActive = false, isProcessing = false, OnOffSwich = false;
         string ToDisplay = "F - use boiler";
         int maxTemperature = 250;
-        public virtual string GetActionTextureName() => "MGContent/Oxidizing/DoAction";
+        public virtual string GetActionTextureName() => "MGContent/Vaporizer/Boil";
         float state = 1;
         TimeSpan Timer;
         Barrel Input, Buffer;

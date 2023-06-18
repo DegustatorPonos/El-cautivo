@@ -6,7 +6,7 @@ namespace El_Cautivo.Minigames
 {
     public class OxidyzingMG : BoilingMG
     {
-        public override string GetActionTextureName() => "MGContent/Oxidizing/DoAction";
+        public override string GetActionTextureName() => "MGContent/Oxidizing/OxidyzeButton";
         public OxidyzingMG(Rectangle collider) : base(collider)
         {
             base.sedActDescription("Use oxiyzer");

@@ -14,7 +14,7 @@ namespace El_Cautivo.Minigames
         Texture2D BackTexture, DrinkTexture, MixTexture;
         Rectangle Collider;
         bool IsColliding = false, IsActive = false;
-        string ToDisplay = "F - take chemicals";
+        string ToDisplay = "F - Drink coffe til' the end of the day";
 
         public CoffeTable(Rectangle collider)
         {
@@ -41,7 +41,7 @@ namespace El_Cautivo.Minigames
         public void LoadContent(ContentManager content)
         {
             BackTexture = content.Load<Texture2D>("Buttons/BackButton");
-            DrinkTexture = content.Load<Texture2D>("MGContent/Oxidizing/DoAction");
+            DrinkTexture = content.Load<Texture2D>("MGContent/CoffeTable/Drink");
             MixTexture = content.Load<Texture2D>("MGContent/Boiling/MixButton");
 
             DrikPos = new Vector2(10, (1080 - (DrinkTexture.Height * 2)) / 2);
