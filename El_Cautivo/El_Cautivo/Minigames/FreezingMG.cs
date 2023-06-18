@@ -132,7 +132,7 @@ namespace El_Cautivo.Minigames
             {
                 ActionButton.Update();
                 OnOffButton.Update();
-                temperature = targetTemp + (Timer - Lab.InGameTime).Minutes;
+                if(isProcessing)temperature = targetTemp + (Timer - Lab.InGameTime).Minutes;
                 ToDisplay = "Temperature = " + temperature;
                 BackButton.Update();
             }

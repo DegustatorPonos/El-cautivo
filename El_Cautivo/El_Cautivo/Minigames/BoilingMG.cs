@@ -41,7 +41,7 @@ namespace El_Cautivo.Minigames
             return new Dictionary<Tuple<Game1.ChemElement, Game1.ChemElement>, Tuple<Game1.ChemElement, TimeSpan>>()
             {
                 {new Tuple<Game1.ChemElement, Game1.ChemElement>(Game1.ChemElement.Glutamic_acid, Game1.ChemElement.Crushed_Glicine),
-                    new Tuple<Game1.ChemElement, TimeSpan>(Game1.ChemElement.Glutathionate, new TimeSpan(0, 40, 0))}
+                    new Tuple<Game1.ChemElement, TimeSpan>(Game1.ChemElement.Glutathionate, new TimeSpan(0, 45, 0))}
             };
         }
 

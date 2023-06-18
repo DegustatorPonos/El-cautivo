@@ -9,7 +9,7 @@ namespace El_Cautivo.Minigames
         public override string GetActionTextureName() => "MGContent/Oxidizing/OxidyzeButton";
         public OxidyzingMG(Rectangle collider) : base(collider)
         {
-            base.sedActDescription("Use oxiyzer");
+            base.sedActDescription("F - Use oxiyzer");
         }
         public override Dictionary<Tuple<Game1.ChemElement, Game1.ChemElement>, Tuple<Game1.ChemElement, TimeSpan>> GetRecipies()
         {
